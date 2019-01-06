@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,13 +16,9 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
-
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+    public static WPI_TalonSRX
+        frontLeftDrive = new WPI_TalonSRX(RobotConstants.kfrontLeftTalon),
+        backleftDrive = new WPI_TalonSRX(RobotConstants.kbackleftTalon),
+        frontRightDrive = new WPI_TalonSRX(RobotConstants.kfrontRightTalon),
+        backRightDrive = new WPI_TalonSRX(RobotConstants.kbackRightTalon);
 }
