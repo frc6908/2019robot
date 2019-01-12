@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.TankDrive;
 
 /**
  * 2019 robot drivetrain subsystem
@@ -20,8 +21,10 @@ public class Drivetrain extends Subsystem {
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
 
     public void drive(double leftSpeed, double rightSpeed) {
-        leftMotors.set(leftSpeed);
-        rightMotors.set(rightSpeed);
+        System.out.println(leftSpeed);
+        System.out.println(rightSpeed);
+        leftMotors.set(-leftSpeed);
+        rightMotors.set(-rightSpeed);
     }
 
     public void stop() {
@@ -32,6 +35,6 @@ public class Drivetrain extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TankDrive());
     }
 }
