@@ -8,6 +8,10 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.I2C.Port;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,4 +25,11 @@ public class RobotMap {
         backleftDrive = new WPI_TalonSRX(RobotConstants.kbackleftTalon),
         frontRightDrive = new WPI_TalonSRX(RobotConstants.kfrontRightTalon),
         backRightDrive = new WPI_TalonSRX(RobotConstants.kbackRightTalon);
+    
+    public static AHRS
+        gyro = new AHRS(Port.kMXP);
+    
+    public static Encoder
+        leftDriveEncoder = new Encoder(RobotConstants.kLeftDriveEncoderChannelA, RobotConstants.kLeftDriveEncoderChannelB),
+        rightDriveEncoder = new Encoder(RobotConstants.kRightDriveEncoderChannelA, RobotConstants.kRightDriveEncoderChannelB);
 }

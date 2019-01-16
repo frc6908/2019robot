@@ -7,8 +7,10 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class TankDrive extends Command {
   public TankDrive() {
@@ -20,15 +22,20 @@ public class TankDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+      RobotMap.gyro.reset();
       Robot.drivetrain.stop();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double leftSpeed = Robot.oi.leftStick.getY();
-      double rightSpeed = Robot.oi.rightStick.getY();
-      Robot.drivetrain.drive(leftSpeed, rightSpeed);
+      double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
+      double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
+      double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
+      Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
+      System.out.println("-------------------------------");
+      System.out.println(RobotMap.leftDriveEncoder.get());
+      System.out.println(RobotMap.rightDriveEncoder.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()

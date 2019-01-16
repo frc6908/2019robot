@@ -20,11 +20,13 @@ public class Drivetrain extends Subsystem {
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
 
+    public Drivetrain() {
+        rightMotors.setInverted(true);
+    }
+    
     public void drive(double leftSpeed, double rightSpeed) {
-        System.out.println(leftSpeed);
-        System.out.println(rightSpeed);
-        leftMotors.set(-leftSpeed);
-        rightMotors.set(-rightSpeed);
+        leftMotors.set(leftSpeed);
+        rightMotors.set(rightSpeed);
     }
 
     public void stop() {

@@ -12,9 +12,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.*;
+import frc.robot.commands.CenterStartLeftSwitch;
+import frc.robot.commands.SameSideScaleAuto;
+import frc.robot.commands.SlowLeftSwitchAuto;
+import frc.robot.commands.SmallCurveAuto;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Vision;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +33,7 @@ public class Robot extends TimedRobot {
 
     // Initialize Subsystems Here
     public static Drivetrain drivetrain = new Drivetrain();
+    public static Vision vision = new Vision();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -40,7 +45,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         oi = new OI();
-        m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+        m_chooser.setDefaultOption("Default Auto", new CenterStartLeftSwitch());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
     }
@@ -86,6 +91,9 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
+        RobotMap.leftDriveEncoder.reset();
+        RobotMap.rightDriveEncoder.reset();
+        RobotMap.gyro.reset();
         m_autonomousCommand = m_chooser.getSelected();
 
         /*

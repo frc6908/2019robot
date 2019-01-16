@@ -28,7 +28,7 @@ public class lineFollowingRPI extends Command {
   public lineFollowingRPI() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    requires(Robot.vision);
   }
 
   // Called just before this Command runs the first time

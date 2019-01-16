@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,6 +18,7 @@ public class OI {
     public Joystick
         leftStick = new Joystick(RobotConstants.kLeftStickPort),
         rightStick = new Joystick(RobotConstants.kRightStickPort);
+    public XboxController controller = new XboxController(3);
 
     public OI() {
         

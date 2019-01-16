@@ -13,13 +13,27 @@ package frc.robot;
 public class RobotConstants {
     // Drivetrain Constants
     public static final int
-        kfrontLeftTalon = 0,
-        kbackleftTalon = 1,
-        kfrontRightTalon = 2,
-        kbackRightTalon = 3;
+        kfrontLeftTalon = 2,
+        kbackleftTalon = 3,
+        kfrontRightTalon = 1,
+        kbackRightTalon = 0,
+        kLeftDriveEncoderChannelA = 0,
+        kLeftDriveEncoderChannelB = 1,
+        kRightDriveEncoderChannelA = 2,
+        kRightDriveEncoderChannelB = 3,
+        kDriveEncoderTicksPerRev = 255;
 
     // Joystick Constants
     public static final int
         kLeftStickPort = 0,
         kRightStickPort = 1;
+    
+    // Pathfinder Constants
+    public static final double
+        kP = 0.001,
+        kI = 0.0001,
+        kD = 0.0001,
+        kVMax = 9.08,
+        kA = 0,
+        kWheelDiameter = 0.5;
 }
