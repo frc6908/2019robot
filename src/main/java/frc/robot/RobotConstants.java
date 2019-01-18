@@ -36,4 +36,9 @@ public class RobotConstants {
         kVMax = 9.08,
         kA = 0,
         kWheelDiameter = 0.5;
+
+    //Vision Constants
+    public static final double
+        kUltrasonicSensorChannel = 0,
+        kScaleFactor = 5.0800027432;
 }

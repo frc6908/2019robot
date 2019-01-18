@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
 import frc.robot.RobotConstants;
+import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.networktables.*;
 
 public class lineFollowingRPI extends Command {
@@ -19,9 +20,6 @@ public class lineFollowingRPI extends Command {
   NetworkTableEntry xEntry;
   NetworkTableEntry yEntry;
 
-  DifferentialDrive drive;
-
-
   int imgWidth = 320;
   int imgHeight = 240;
 
@@ -29,6 +27,7 @@ public class lineFollowingRPI extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.vision);
+    requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
@@ -47,16 +46,15 @@ public class lineFollowingRPI extends Command {
     int centerX = (int)xEntry.getDouble(-1000);
     int centerY = (int)yEntry.getDouble(-1000);
 
-    if (centerX != -1000 && centerY != -1000)
+    //if (centerX != -1000 && centerY != -1000 && (Robot.vision.getDistance(0) >= 5))
+    if (centerX != -1000 && centerY != -1000) 
     {
       System.out.println();
       System.out.println("centerX: " + centerX);
       System.out.println("centerY: " + centerY);
       double turn = centerX - (imgWidth / 2);
       System.out.println("Turn: " + (turn*0.005));
-      //drive.arcadeDrive(0.5, turn * 0.005);
-      
-
+      //Robot.vision.drive.arcadeDrive(0.5, turn);
     }
   }
 
