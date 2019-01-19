@@ -10,7 +10,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
-import frc.robot.RobotConstants;
 import edu.wpi.first.networktables.*;
 
 public class lineFollowingRPI extends Command {
@@ -18,9 +17,6 @@ public class lineFollowingRPI extends Command {
 
   NetworkTableEntry xEntry;
   NetworkTableEntry yEntry;
-
-  DifferentialDrive drive;
-
 
   int imgWidth = 320;
   int imgHeight = 240;
@@ -53,8 +49,6 @@ public class lineFollowingRPI extends Command {
       System.out.println("centerX: " + centerX);
       System.out.println("centerY: " + centerY);
       double turn = centerX - (imgWidth / 2);
-      System.out.println("Turn: " + (turn*0.005));
-      //drive.arcadeDrive(0.5, turn * 0.005);
       
 
     }

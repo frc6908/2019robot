@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.TankDrive;
-import frc.robot.commands.WeirdDrive;
 import frc.robot.commands.ArcadeDrive;
 
 /**
