@@ -9,8 +9,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.WeirdDrive;
+import frc.robot.commands.ArcadeDrive;
 
 /**
  * 2019 robot drivetrain subsystem
@@ -19,14 +23,21 @@ public class Drivetrain extends Subsystem {
     public SpeedControllerGroup
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
+        
+    private DifferentialDrive drivebase;
 
     public Drivetrain() {
-        rightMotors.setInverted(true);
+        //rightMotors.setInverted(true);
+        drivebase = new DifferentialDrive(leftMotors, rightMotors);
+        SmartDashboard.putData(drivebase);
     }
     
     public void drive(double leftSpeed, double rightSpeed) {
-        leftMotors.set(leftSpeed);
-        rightMotors.set(rightSpeed);
+        drivebase.tankDrive(leftSpeed, rightSpeed);
+    }
+
+    public void curve(double speed, double rotation, boolean isQuickTurn){
+        drivebase.curvatureDrive(speed, rotation, isQuickTurn);
     }
 
     public void stop() {
@@ -37,6 +48,6 @@ public class Drivetrain extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new TankDrive());
+        setDefaultCommand(new ArcadeDrive());
     }
 }
