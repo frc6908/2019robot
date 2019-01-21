@@ -36,4 +36,8 @@ public class RobotConstants {
         kVMax = 9.08,
         kA = 0,
         kWheelDiameter = 0.5;
+
+    //Ultrasonic sensor
+    public static final int
+        kUSPort = 3;
 }

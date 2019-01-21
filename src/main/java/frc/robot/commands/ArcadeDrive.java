@@ -34,9 +34,9 @@ public class ArcadeDrive extends Command {
       //double accel = (0.5+(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.5));
       boolean quick = Robot.oi.controller.getBumper(Hand.kLeft);
       Robot.drivetrain.curve(speed, turn, quick);
-      System.out.println("-------------------------------");
-      System.out.println(RobotMap.leftDriveEncoder.get());
-      System.out.println(RobotMap.rightDriveEncoder.get());
+      //System.out.println("-------------------------------");
+      //System.out.println(RobotMap.leftDriveEncoder.get());
+      //System.out.println(RobotMap.rightDriveEncoder.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()
