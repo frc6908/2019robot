@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.TankDrive;
-import frc.robot.commands.WeirdDrive;
 import frc.robot.commands.ArcadeDrive;
 
 /**
@@ -24,14 +23,19 @@ public class Drivetrain extends Subsystem {
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
         
-    private DifferentialDrive drivebase;
+    public DifferentialDrive drivebase;
 
     public Drivetrain() {
-        //rightMotors.setInverted(true);
+        rightMotors.setInverted(true);
         drivebase = new DifferentialDrive(leftMotors, rightMotors);
         SmartDashboard.putData(drivebase);
     }
     
+    public void infuzedDrive(double leftSpeed, double rightSpeed) {
+        leftMotors.set(leftSpeed);
+        rightMotors.set(rightSpeed);
+    }
+
     public void drive(double leftSpeed, double rightSpeed) {
         drivebase.tankDrive(leftSpeed, rightSpeed);
     }

@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C.Port;
 
@@ -32,4 +33,7 @@ public class RobotMap {
     public static Encoder
         leftDriveEncoder = new Encoder(RobotConstants.kLeftDriveEncoderChannelA, RobotConstants.kLeftDriveEncoderChannelB),
         rightDriveEncoder = new Encoder(RobotConstants.kRightDriveEncoderChannelA, RobotConstants.kRightDriveEncoderChannelB);
+
+    public static final AnalogInput 
+        ultrasonicSensor = new AnalogInput(RobotConstants.kUSPort);
 }

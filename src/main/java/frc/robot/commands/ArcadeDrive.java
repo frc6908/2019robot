@@ -29,14 +29,14 @@ public class ArcadeDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double speed = 0.5*-Robot.oi.controller.getY(Hand.kRight);
-      double turn = 0.5*Robot.oi.controller.getX(Hand.kRight);
+      double speed = 0.8*-Robot.oi.controller.getY(Hand.kRight);
+      double turn = 0.8*Robot.oi.controller.getX(Hand.kRight);
       //double accel = (0.5+(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.5));
       boolean quick = Robot.oi.controller.getBumper(Hand.kLeft);
       Robot.drivetrain.curve(speed, turn, quick);
-      System.out.println("-------------------------------");
-      System.out.println(RobotMap.leftDriveEncoder.get());
-      System.out.println(RobotMap.rightDriveEncoder.get());
+      //System.out.println("-------------------------------");
+      //System.out.println(RobotMap.leftDriveEncoder.get());
+      //System.out.println(RobotMap.rightDriveEncoder.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()

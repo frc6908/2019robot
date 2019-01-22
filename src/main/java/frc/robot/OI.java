@@ -9,6 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.BallFollowing;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -20,7 +23,10 @@ public class OI {
         rightStick = new Joystick(RobotConstants.kRightStickPort);
     public XboxController controller = new XboxController(3);
 
+    // public Button ballFollow;
+
     public OI() {
-        
+        //ballFollow = new JoystickButton(leftStick, 1); //thumb button on joystick
+        //ballFollow.whenPressed(new BallFollowing());
     }
 }
