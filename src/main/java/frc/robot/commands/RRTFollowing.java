@@ -38,14 +38,20 @@ public class RRTFollowing extends Command {
     size2 = table.getEntry("size2");
   }
 
-  // Move the robot according to the values recieved from the vision coprocesor
+  // Move the robot according to the values recieved from the vision coprocessor
   @Override
   protected void execute() {
     //double centerX = xEntry1.getDouble(-1000) + (xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/2;
     double centerX = xEntry1.getDouble(-1000);
-    double size = size1.getDouble(-1000);
+    double size = size1.getDouble(0);
     //double blob1 = size1.getDouble(-1000); 
     //double blob2 = size2.getDouble(-1000);
+    if (size == 0)
+    {
+      Robot.drivetrain.stop();
+    }
+    else {
+    
     double offset = 160-centerX;
     System.out.println("centerX: " + centerX);
     double turn = (offset * 0.002);
@@ -53,21 +59,8 @@ public class RRTFollowing extends Command {
     System.out.println("Turn: " + turn);
     System.out.println("Throttle: " + throttle);
     Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
-    // if (Math.abs(offset) > 30 && centerX != -1000) {
-      // if statements to compare size - get throttle from this
-      // if(size>7000) throttle = -0.3;
-      //else if(size < 1000) throttle = 0.3;
-      //else throttle = 0.2;
-      // else throttle = 0.3;
-      // Robot.drivetrain.infuzedDrive(-turn, turn);
-      // Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
     }
-    
-   // Robot.drivetrain.drive(0, 0);
-
-    
-
-  //}
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
