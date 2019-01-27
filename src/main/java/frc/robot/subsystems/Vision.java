@@ -8,7 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.BallFollowing;;
+import frc.robot.commands.BallFollowing;
+import frc.robot.commands.RRTFollowing;;
 
 /**
  * Add your docs here.
@@ -20,6 +21,6 @@ public class Vision extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-   setDefaultCommand(new BallFollowing());
+   setDefaultCommand(new RRTFollowing());
   }
 }
