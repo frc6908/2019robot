@@ -9,9 +9,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class RRTFollowing extends Command {
+  private double prev, offset, turn, size, throttle;
+
   public RRTFollowing() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.vision);
@@ -27,6 +30,11 @@ public class RRTFollowing extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    prev = 0;
+    offset = 0;
+    turn = 0;
+    size = 0;
+    throttle = 0;
     // initaialize network tables
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("RRTFollowing");
@@ -46,20 +54,26 @@ public class RRTFollowing extends Command {
     double size = size1.getDouble(0);
     //double blob1 = size1.getDouble(-1000); 
     //double blob2 = size2.getDouble(-1000);
-    if (size == 0)
-    {
-      Robot.drivetrain.stop();
-    }
-    else {
-    
-    double offset = 160-centerX;
-    System.out.println("centerX: " + centerX);
-    double turn = (offset * 0.002);
-    double throttle = 250/size;
-    System.out.println("Turn: " + turn);
-    System.out.println("Throttle: " + throttle);
+    // if (size == 0)
+    // {
+    //   Robot.drivetrain.infuzedDrive(0, 0);
+    // } else {
+    throttle = 125/size;
+    if(throttle > 1) throttle = 1;
+
+    if(centerX == 0) offset = 0;
+    else offset = 160-centerX;
+    turn = (offset * 0.0015) + (0.00025 * ((offset - prev) / 0.02));
+    SmartDashboard.putNumber("turn", turn);
+    SmartDashboard.putNumber("throttle", throttle);
+    // Robot.drivetrain.infuzedDrive(-turn, turn);
+    prev = offset;
+    // System.out.println("centerX: " + centerX);
+    // System.out.println("Size: " + size);
+    // double throttle = 250/size;
+    // System.out.println("Turn: " + turn);
+    // System.out.println("Throttle: " + throttle);
     Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
