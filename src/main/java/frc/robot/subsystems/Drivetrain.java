@@ -12,11 +12,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.commands.TankDrive;
-import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.drivetrain.CurvatureDrive;
 
 /**
- * 2019 robot drivetrain subsystem
+ * Subsystem that controls the robot drive base
  */
 public class Drivetrain extends Subsystem {
     public SpeedControllerGroup
@@ -52,6 +51,6 @@ public class Drivetrain extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        // setDefaultCommand(new ArcadeDrive());
+        setDefaultCommand(new CurvatureDrive());
     }
 }

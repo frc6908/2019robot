@@ -7,10 +7,8 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C.Port;
 
@@ -21,19 +19,16 @@ import edu.wpi.first.wpilibj.I2C.Port;
  * floating around.
  */
 public class RobotMap {
-    public static WPI_TalonSRX
-        frontLeftDrive = new WPI_TalonSRX(RobotConstants.kfrontLeftTalon),
-        backleftDrive = new WPI_TalonSRX(RobotConstants.kbackleftTalon),
-        frontRightDrive = new WPI_TalonSRX(RobotConstants.kfrontRightTalon),
-        backRightDrive = new WPI_TalonSRX(RobotConstants.kbackRightTalon);
+    public static WPI_VictorSPX
+        frontLeftDrive = new WPI_VictorSPX(Constants.kfrontLeftTalon),
+        backleftDrive = new WPI_VictorSPX(Constants.kbackleftTalon),
+        frontRightDrive = new WPI_VictorSPX(Constants.kfrontRightTalon),
+        backRightDrive = new WPI_VictorSPX(Constants.kbackRightTalon);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);
     
     public static Encoder
-        leftDriveEncoder = new Encoder(RobotConstants.kLeftDriveEncoderChannelA, RobotConstants.kLeftDriveEncoderChannelB),
-        rightDriveEncoder = new Encoder(RobotConstants.kRightDriveEncoderChannelA, RobotConstants.kRightDriveEncoderChannelB);
-
-    public static final AnalogInput 
-        ultrasonicSensor = new AnalogInput(RobotConstants.kUSPort);
+        leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
+        rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
 }

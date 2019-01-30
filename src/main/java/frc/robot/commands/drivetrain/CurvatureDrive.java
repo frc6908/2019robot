@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class TankDrive extends Command {
-  public TankDrive() {
+public class CurvatureDrive extends Command {
+  public CurvatureDrive() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -29,10 +29,10 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
-      double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
-      double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
-      Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
+      double speed = 0.8*-Robot.oi.controller.getY(Hand.kRight);
+      double turn = 0.8*Robot.oi.controller.getX(Hand.kRight);
+      boolean quick = Robot.oi.controller.getBumper(Hand.kLeft);
+      Robot.drivetrain.curve(speed, turn, quick);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -5,11 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.vision;
 
-import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class RRTFollowing extends Command {
@@ -42,37 +44,25 @@ public class RRTFollowing extends Command {
     yEntry1 = table .getEntry("centerY1");
     size1 = table.getEntry("size1");
     xEntry2 = table.getEntry("centerX2");
-    yEntry2 = table .getEntry("centerY2");
+    yEntry2 = table.getEntry("centerY2");
     size2 = table.getEntry("size2");
   }
 
   // Move the robot according to the values recieved from the vision coprocessor
   @Override
   protected void execute() {
-    //double centerX = xEntry1.getDouble(-1000) + (xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/2;
+    // Retrieve values regarding RRT attributes
+    // double tapeCenter = Vision.getTapeCenter();
     double centerX = xEntry1.getDouble(-1000);
-    double size = size1.getDouble(0);
-    //double blob1 = size1.getDouble(-1000); 
-    //double blob2 = size2.getDouble(-1000);
-    // if (size == 0)
-    // {
-    //   Robot.drivetrain.infuzedDrive(0, 0);
-    // } else {
-    throttle = 125/size;
-    if(throttle > 1) throttle = 1;
-
     if(centerX == 0) offset = 0;
     else offset = 160-centerX;
-    turn = (offset * 0.0015) + (0.00025 * ((offset - prev) / 0.02));
-    SmartDashboard.putNumber("turn", turn);
-    SmartDashboard.putNumber("throttle", throttle);
-    // Robot.drivetrain.infuzedDrive(-turn, turn);
+    // double tapeSize = Vision.getTapeSize();
+    double size = size1.getDouble(0);
+
+    throttle = Constants.kThrottleP/size;
+    if(throttle > 1) throttle = 1;
+    turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
     prev = offset;
-    // System.out.println("centerX: " + centerX);
-    // System.out.println("Size: " + size);
-    // double throttle = 250/size;
-    // System.out.println("Turn: " + turn);
-    // System.out.println("Throttle: " + throttle);
     Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
   }
 

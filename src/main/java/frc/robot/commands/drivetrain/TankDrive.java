@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ArcadeDrive extends Command {
-  public ArcadeDrive() {
+public class TankDrive extends Command {
+  public TankDrive() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -29,14 +29,10 @@ public class ArcadeDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double speed = 0.8*-Robot.oi.controller.getY(Hand.kRight);
-      double turn = 0.8*Robot.oi.controller.getX(Hand.kRight);
-      //double accel = (0.5+(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.5));
-      boolean quick = Robot.oi.controller.getBumper(Hand.kLeft);
-      Robot.drivetrain.curve(speed, turn, quick);
-      //System.out.println("-------------------------------");
-      //System.out.println(RobotMap.leftDriveEncoder.get());
-      //System.out.println(RobotMap.rightDriveEncoder.get());
+      double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
+      double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
+      double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
+      Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
   }
 
   // Make this return true when this Command no longer needs to run execute()
