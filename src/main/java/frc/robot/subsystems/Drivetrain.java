@@ -7,6 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -18,9 +21,17 @@ import frc.robot.commands.drivetrain.CurvatureDrive;
  * Subsystem that controls the robot drive base
  */
 public class Drivetrain extends Subsystem {
-    public SpeedControllerGroup
+    
+    private SpeedControllerGroup
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
+    
+    private AHRS
+        gyro = RobotMap.gyro;
+    
+    private Encoder
+        leftDriveEncoder = RobotMap.leftDriveEncoder,
+        rightDriveEncoder = RobotMap.rightDriveEncoder;
         
     public DifferentialDrive drivebase;
 
@@ -46,6 +57,26 @@ public class Drivetrain extends Subsystem {
     public void stop() {
         leftMotors.stopMotor();
         rightMotors.stopMotor();
+    }
+
+    public Encoder getLeftEncoder() {
+        return leftDriveEncoder;
+    }
+
+    public Encoder getRightEncoder() {
+        return rightDriveEncoder;
+    }
+
+    public int getLeftEncoderTicks() {
+        return leftDriveEncoder.get();
+    }
+
+    public int getRightEncoderTicks() {
+        return rightDriveEncoder.get();
+    }
+
+    public double getGyroAngle() {
+        return gyro.getAngle();
     }
 
     @Override

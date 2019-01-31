@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
@@ -24,6 +25,9 @@ public class RobotMap {
         backleftDrive = new WPI_VictorSPX(Constants.kbackleftTalon),
         frontRightDrive = new WPI_VictorSPX(Constants.kfrontRightTalon),
         backRightDrive = new WPI_VictorSPX(Constants.kbackRightTalon);
+    
+    public static WPI_TalonSRX
+        armMotor = new WPI_TalonSRX(Constants.kArmMotor);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);

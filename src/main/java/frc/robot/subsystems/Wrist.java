@@ -7,19 +7,22 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Constants;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.vision.RRTFollowing;
 
 /**
- * Subsystem that controls all robot vision capabilities
+ * Subsystem that controls the wrist mechanism to angle the intake
  */
-public class Vision extends Subsystem {
+public class Wrist extends Subsystem {
   
-  // Add NetworkTables stuff here
+  private WPI_TalonSRX
+    wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-   setDefaultCommand(new RRTFollowing());
+    // setDefaultCommand(new MySpecialCommand());
   }
 }

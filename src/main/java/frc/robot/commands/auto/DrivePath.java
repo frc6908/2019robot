@@ -10,28 +10,31 @@ package frc.robot.commands.auto;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.Constants;
-import frc.robot.RobotMap;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
 
-public class AutoDrive extends Command {
+public class DrivePath extends Command {
   /**
    * General command to drive a trajectory.
    */
-  private Trajectory leftTrajectory, rightTrajectory;
+  private Trajectory
+    leftTrajectory,
+    rightTrajectory;
 
-  private EncoderFollower leftFollower, rightFollower;
+  private EncoderFollower
+    leftFollower,
+    rightFollower;
 
-  public AutoDrive(Trajectory l, Trajectory r) {
+  public DrivePath(Trajectory l, Trajectory r) {
     leftTrajectory = l;
     rightTrajectory = r;
 
     leftFollower = new EncoderFollower(leftTrajectory);
     rightFollower = new EncoderFollower(rightTrajectory);
 
-    leftFollower.configureEncoder(RobotMap.leftDriveEncoder.get(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
-    rightFollower.configureEncoder(RobotMap.rightDriveEncoder.get(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
+    leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
+    rightFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
     leftFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
     rightFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
 
@@ -44,10 +47,10 @@ public class AutoDrive extends Command {
 
   @Override
   protected void execute() {
-    double leftSpeed = leftFollower.calculate(-RobotMap.leftDriveEncoder.get());
-    double rightSpeed = rightFollower.calculate(RobotMap.rightDriveEncoder.get());
+    double leftSpeed = leftFollower.calculate(-Robot.drivetrain.getLeftEncoderTicks());
+    double rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoderTicks());
     
-    double gyroHeading = -RobotMap.gyro.getAngle();
+    double gyroHeading = -Robot.drivetrain.getGyroAngle();
     double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
     double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
     double turn = 0.8 * (-1.0 / 80.0) * angleDifference;

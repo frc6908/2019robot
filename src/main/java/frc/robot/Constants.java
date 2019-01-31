@@ -36,6 +36,14 @@ public class Constants {
         kDriveA = 0,
         kDriveWheelDiameter = 0.5;
 
+    // Arm Subsystem Ports
+    public static final int
+        kArmMotor = 0;
+
+    // Wrist Subsystem Ports
+    public static final int
+        kWristMotor = 0;
+
     // Vision Control Constants
     public static final double
         kThrottleP = 125,
