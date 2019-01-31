@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 /**
@@ -21,13 +22,18 @@ import edu.wpi.first.wpilibj.I2C.Port;
  */
 public class RobotMap {
     public static WPI_VictorSPX
-        frontLeftDrive = new WPI_VictorSPX(Constants.kfrontLeftTalon),
-        backleftDrive = new WPI_VictorSPX(Constants.kbackleftTalon),
-        frontRightDrive = new WPI_VictorSPX(Constants.kfrontRightTalon),
-        backRightDrive = new WPI_VictorSPX(Constants.kbackRightTalon);
+        frontLeftDrive = new WPI_VictorSPX(Constants.kfrontLeftMotor),
+        backleftDrive = new WPI_VictorSPX(Constants.kbackleftMotor),
+        frontRightDrive = new WPI_VictorSPX(Constants.kfrontRightMotor),
+        backRightDrive = new WPI_VictorSPX(Constants.kbackRightMotor);
     
     public static WPI_TalonSRX
-        armMotor = new WPI_TalonSRX(Constants.kArmMotor);
+        armMotor = new WPI_TalonSRX(Constants.kArmMotor),
+        wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
+    
+    public static Spark
+        leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
+        rightIntakeMotor = new Spark(Constants.kRightIntakeMotor);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);

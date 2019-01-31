@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.Wrist;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +32,9 @@ public class Robot extends TimedRobot {
     // Initialize Subsystems Here
     public static Drivetrain drivetrain = new Drivetrain();
     public static Vision vision = new Vision();
+    public static Arm arm = new Arm();
+    public static Wrist wrist = new Wrist();
+    public static Intake intake = new Intake();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();

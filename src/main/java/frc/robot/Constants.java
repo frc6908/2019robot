@@ -17,10 +17,10 @@ public class Constants {
 
     // Drivetrain Subsystem Ports
     public static final int
-        kfrontLeftTalon = 0,
-        kbackleftTalon = 0,
-        kfrontRightTalon = 0,
-        kbackRightTalon = 0,
+        kfrontLeftMotor = 0,
+        kbackleftMotor = 0,
+        kfrontRightMotor = 0,
+        kbackRightMotor = 0,
         kLeftDriveEncoderChannelA = 0,
         kLeftDriveEncoderChannelB = 0,
         kRightDriveEncoderChannelA = 0,
@@ -43,6 +43,10 @@ public class Constants {
     // Wrist Subsystem Ports
     public static final int
         kWristMotor = 0;
+    
+    public static final int
+        kLeftIntakeMotor = 0,
+        kRightIntakeMotor = 0;
 
     // Vision Control Constants
     public static final double

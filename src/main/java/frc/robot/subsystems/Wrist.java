@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
+import frc.robot.RobotMap;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,8 +19,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Wrist extends Subsystem {
   
   private WPI_TalonSRX
-    wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
+    wristMotor = RobotMap.wristMotor;
 
+  public void setAngle(double angle) {
+    wristMotor.set(angle);
+  }
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

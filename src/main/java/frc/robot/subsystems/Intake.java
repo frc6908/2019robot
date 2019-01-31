@@ -7,19 +7,32 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.vision.RRTFollowing;
+import frc.robot.RobotMap;
 
 /**
- * Subsystem that controls all robot vision capabilities
+ * Add your docs here.
  */
-public class Vision extends Subsystem {
-  
-  // Add NetworkTables stuff here
-  
+public class Intake extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+
+  private Spark
+    leftIntakeMotor = RobotMap.leftIntakeMotor,
+    rightIntakeMotor = RobotMap.rightIntakeMotor;
+
+  public void setLeftIntakeMotor(double speed) {
+    leftIntakeMotor.set(speed);
+  }
+
+  public void setRightIntakeMotor(double speed) {
+    rightIntakeMotor.set(speed);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new RRTFollowing());
+    // setDefaultCommand(new MySpecialCommand());
   }
 }
