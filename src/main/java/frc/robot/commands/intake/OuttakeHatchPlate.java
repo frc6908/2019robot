@@ -5,45 +5,33 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.intake;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class TankDrive extends Command {
-  public TankDrive() {
+public class OuttakeHatchPlate extends TimedCommand {
+  public OuttakeHatchPlate() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    super(1);
+    requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-      RobotMap.gyro.reset();
-      Robot.drivetrain.stop();
+    Robot.intake.setSolenoidPosition(true);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
-      double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
-      double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
-      Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
-  }
-
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.intake.setSolenoidPosition(false);
   }
 
   // Called when another command which requires one or more of the same

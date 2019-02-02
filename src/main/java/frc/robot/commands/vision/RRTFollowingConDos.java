@@ -5,14 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.vision;
 
-import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class RRTFollowing extends Command {
-  public RRTFollowing() {
+public class RRTFollowingConDos extends Command {
+  private double prev, offset, turn, area1, area2, throttle;
+
+  public RRTFollowingConDos() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.vision);
   }
@@ -27,6 +32,12 @@ public class RRTFollowing extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    prev = 0;
+    offset = 0;
+    turn = 0;
+    area1 = 0;
+    area2 = 0;
+    throttle = 0;
     // initaialize network tables
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("RRTFollowing");
@@ -34,32 +45,33 @@ public class RRTFollowing extends Command {
     yEntry1 = table .getEntry("centerY1");
     size1 = table.getEntry("size1");
     xEntry2 = table.getEntry("centerX2");
-    yEntry2 = table .getEntry("centerY2");
+    yEntry2 = table.getEntry("centerY2");
     size2 = table.getEntry("size2");
   }
 
   // Move the robot according to the values recieved from the vision coprocessor
   @Override
   protected void execute() {
-    //double centerX = xEntry1.getDouble(-1000) + (xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/2;
-    double centerX = xEntry1.getDouble(-1000);
-    double size = size1.getDouble(0);
-    //double blob1 = size1.getDouble(-1000); 
-    //double blob2 = size2.getDouble(-1000);
-    if (size == 0)
-    {
-      Robot.drivetrain.stop();
+    // Retrieve values regarding RRT attributes
+    // double tapeCenter = Vision.getTapeCenter();
+    double centerX = xEntry1.getDouble(-1000) + ((xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/ 2);
+    area1 = size1.getDouble(0);
+    area2 = size2.getDouble(0);
+    if(centerX == 0) offset = 0;
+    else offset = 160-centerX;
+    // double tapeSize = Vision.getTapeSize();
+
+    throttle = Constants.kThrottleP/area1;
+    if(throttle > 1) throttle = 1;
+    turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
+    prev = offset;
+    if (Math.abs(throttle - turn) >= 0.05)
+      Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
+    else if (area1 != 0 && area2 != 0) {
+      double difference = (area1 - area2) * 0.002;
+      Robot.drivetrain.infuzedDrive(-difference, difference);
     }
-    else {
-    
-    double offset = 160-centerX;
-    System.out.println("centerX: " + centerX);
-    double turn = (offset * 0.002);
-    double throttle = 250/size;
-    System.out.println("Turn: " + turn);
-    System.out.println("Throttle: " + throttle);
-    Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
-    }
+      
   }
 
   // Make this return true when this Command no longer needs to run execute()

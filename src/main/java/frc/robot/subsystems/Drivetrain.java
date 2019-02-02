@@ -7,21 +7,31 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.commands.TankDrive;
-import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.drivetrain.CurvatureDrive;
 
 /**
- * 2019 robot drivetrain subsystem
+ * Subsystem that controls the robot drive base
  */
 public class Drivetrain extends Subsystem {
-    public SpeedControllerGroup
+    
+    private SpeedControllerGroup
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
+    
+    private AHRS
+        gyro = RobotMap.gyro;
+    
+    private Encoder
+        leftDriveEncoder = RobotMap.leftDriveEncoder,
+        rightDriveEncoder = RobotMap.rightDriveEncoder;
         
     public DifferentialDrive drivebase;
 
@@ -49,9 +59,29 @@ public class Drivetrain extends Subsystem {
         rightMotors.stopMotor();
     }
 
+    public Encoder getLeftEncoder() {
+        return leftDriveEncoder;
+    }
+
+    public Encoder getRightEncoder() {
+        return rightDriveEncoder;
+    }
+
+    public int getLeftEncoderTicks() {
+        return leftDriveEncoder.get();
+    }
+
+    public int getRightEncoderTicks() {
+        return rightDriveEncoder.get();
+    }
+
+    public double getGyroAngle() {
+        return gyro.getAngle();
+    }
+
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        // setDefaultCommand(new ArcadeDrive());
+        setDefaultCommand(new CurvatureDrive());
     }
 }

@@ -5,53 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
-import edu.wpi.first.networktables.*;
 
-public class lineFollowingRPI extends Command {
-
-
-  NetworkTableEntry xEntry;
-  NetworkTableEntry yEntry;
-
-  int imgWidth = 320;
-  int imgHeight = 240;
-
-  public lineFollowingRPI() {
+public class OuttakeCargo extends Command {
+  public OuttakeCargo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.vision);
+    requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable("lineFollowingRPI");
-    xEntry = table.getEntry("centerX");
-    yEntry = table .getEntry("centerY");
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    int centerX = (int)xEntry.getDouble(-1000);
-    int centerY = (int)yEntry.getDouble(-1000);
-
-    if (centerX != -1000 && centerY != -1000)
-    {
-      System.out.println();
-      System.out.println("centerX: " + centerX);
-      System.out.println("centerY: " + centerY);
-      double turn = centerX - (imgWidth / 2);
-      
-
-    }
+    Robot.intake.setLeftIntakeMotor(-1);
+    Robot.intake.setRightIntakeMotor(1);
   }
 
   // Make this return true when this Command no longer needs to run execute()

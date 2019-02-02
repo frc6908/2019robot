@@ -8,10 +8,13 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 /**
@@ -21,19 +24,27 @@ import edu.wpi.first.wpilibj.I2C.Port;
  * floating around.
  */
 public class RobotMap {
+    public static WPI_VictorSPX
+        frontLeftDrive = new WPI_VictorSPX(Constants.kfrontLeftMotor),
+        backleftDrive = new WPI_VictorSPX(Constants.kbackleftMotor),
+        frontRightDrive = new WPI_VictorSPX(Constants.kfrontRightMotor),
+        backRightDrive = new WPI_VictorSPX(Constants.kbackRightMotor);
+    
     public static WPI_TalonSRX
-        frontLeftDrive = new WPI_TalonSRX(RobotConstants.kfrontLeftTalon),
-        backleftDrive = new WPI_TalonSRX(RobotConstants.kbackleftTalon),
-        frontRightDrive = new WPI_TalonSRX(RobotConstants.kfrontRightTalon),
-        backRightDrive = new WPI_TalonSRX(RobotConstants.kbackRightTalon);
+        armMotor = new WPI_TalonSRX(Constants.kArmMotor),
+        wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
+    
+    public static Spark
+        leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
+        rightIntakeMotor = new Spark(Constants.kRightIntakeMotor);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);
     
     public static Encoder
-        leftDriveEncoder = new Encoder(RobotConstants.kLeftDriveEncoderChannelA, RobotConstants.kLeftDriveEncoderChannelB),
-        rightDriveEncoder = new Encoder(RobotConstants.kRightDriveEncoderChannelA, RobotConstants.kRightDriveEncoderChannelB);
-
-    public static final AnalogInput 
-        ultrasonicSensor = new AnalogInput(RobotConstants.kUSPort);
+        leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
+        rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
+     
+        public static DoubleSolenoid
+        solenoidOutake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
 }
