@@ -59,4 +59,8 @@ public class Constants {
         kLeftStickPort = 0,
         kRightStickPort = 1;
     
+    // Pneumatic Constants
+    public static final int
+        kForwardChannel = 0,
+        kReverseChannel = 1;
 }
