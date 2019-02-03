@@ -21,8 +21,12 @@ public class Wrist extends Subsystem {
   private WPI_TalonSRX
     wristMotor = RobotMap.wristMotor;
 
-  public void setAngle(double angle) {
-    wristMotor.set(angle);
+  public void setPosition(int position) {
+    wristMotor.set(position);
+  }
+  
+  public void setSpeed(double speed) {
+    wristMotor.set(speed);
   }
   
   @Override
