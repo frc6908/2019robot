@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -21,6 +23,9 @@ public class Intake extends Subsystem {
   private Spark
     leftIntakeMotor = RobotMap.leftIntakeMotor,
     rightIntakeMotor = RobotMap.rightIntakeMotor;
+  
+  private DoubleSolenoid
+    solenoidOuttake = RobotMap.solenoidOuttake;
 
   public void setLeftIntakeMotor(double speed) {
     leftIntakeMotor.set(speed);
@@ -28,6 +33,14 @@ public class Intake extends Subsystem {
 
   public void setRightIntakeMotor(double speed) {
     rightIntakeMotor.set(speed);
+  }
+  
+  // forwards is true, backwards is false
+  public void setSolenoidPosition(boolean forwardBack) {
+    if(forwardBack)
+      solenoidOuttake.set(Value.kForward);
+    else
+      solenoidOuttake.set(Value.kReverse);
   }
 
   @Override
