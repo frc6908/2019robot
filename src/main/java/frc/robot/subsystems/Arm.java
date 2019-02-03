@@ -20,8 +20,12 @@ public class Arm extends Subsystem {
   private WPI_TalonSRX
     armMotor = RobotMap.armMotor;
 
-  public void setAngle(double angle) {
-    armMotor.set(angle);
+  public void setPosition(int position) {
+    armMotor.set(position);
+  }
+  
+  public void setSpeed(double speed) {
+    armMotor.set(speed);
   }
 
   @Override
