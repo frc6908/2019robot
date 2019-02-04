@@ -5,15 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.arm;
+package frc.robot.commands.wrist.auto;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualArmControl extends Command {
-  public ManualArmControl() {
-    requires(Robot.arm);
+public class SetWristPosition extends Command {
+  private double
+    position;
+
+
+  public SetWristPosition(double position) {
+    this.position = position;
+    requires(Robot.wrist);
   }
 
   @Override
@@ -22,8 +26,7 @@ public class ManualArmControl extends Command {
 
   @Override
   protected void execute() {
-    double speed = -Robot.oi.controller.getY(Hand.kRight) * 0.05;
-    Robot.arm.setSpeed(speed);
+    Robot.wrist.setPosition(position);
   }
 
   @Override

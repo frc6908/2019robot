@@ -30,7 +30,7 @@ public class Constants {
     // Drivetrain Control Constants
     public static final double
         kDriveP = 0.001,
-        kDriveI = 0.0001,
+        kDriveI = 0,
         kDriveD = 0.0001,
         kDriveVMax = 9.08,
         kDriveA = 0,
@@ -38,11 +38,34 @@ public class Constants {
 
     // Arm Subsystem Ports
     public static final int
-        kArmMotor = 0;
+        kArmMasterMotor = 0,
+        kArmSlaveMotor = 0;
+
+    // Arm Control Constants
+    public static final double
+        kArmF = 0,
+        kArmP = 0,
+        kArmI = 0,
+        kArmD = 0;
+        
+    public static final int
+        kArmCruiseVelocity = 0,
+        kArmAcceleration = 0;
 
     // Wrist Subsystem Ports
     public static final int
         kWristMotor = 0;
+
+    // Wrist Control Constants
+    public static final int
+        kWristF = 0,
+        kWristP = 0,
+        kWristI = 0,
+        kWristD = 0;
+
+    public static final int
+        kWristCruiseVelocity = 0,
+        kWristAcceleration = 0;
     
     public static final int
         kLeftIntakeMotor = 0,

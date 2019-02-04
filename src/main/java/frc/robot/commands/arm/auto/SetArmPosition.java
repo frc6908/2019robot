@@ -5,14 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.arm;
+package frc.robot.commands.arm.auto;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualArmControl extends Command {
-  public ManualArmControl() {
+public class SetArmPosition extends Command {
+  private double
+    position;
+
+  public SetArmPosition(double position) {
+    this.position = position;
     requires(Robot.arm);
   }
 
@@ -22,19 +25,23 @@ public class ManualArmControl extends Command {
 
   @Override
   protected void execute() {
-    double speed = -Robot.oi.controller.getY(Hand.kRight) * 0.05;
-    Robot.arm.setSpeed(speed);
+    Robot.arm.setPosition(position);
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.arm.setVoltage(0);
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

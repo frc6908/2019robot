@@ -29,7 +29,8 @@ public class RobotMap {
         backRightDrive = new WPI_VictorSPX(Constants.kbackRightMotor);
     
     public static WPI_TalonSRX
-        armMotor = new WPI_TalonSRX(Constants.kArmMotor),
+        armMasterMotor = new WPI_TalonSRX(Constants.kArmMasterMotor),
+        armSlaveMotor = new WPI_TalonSRX(Constants.kArmSlaveMotor),
         wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
     
     public static Spark
@@ -44,5 +45,5 @@ public class RobotMap {
         rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
     
     public static DoubleSolenoid
-        solenoidOuttake = new DoubleSolenoid(Constants.kForwardChanne, Constants.kReverseChannel);
+        solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
 }

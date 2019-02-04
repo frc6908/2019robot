@@ -25,9 +25,8 @@ public class ManualWristControl extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double wristAngle = -Robot.oi.controller.getY(Hand.kLeft);
-    
-    Robot.wrist.setMotorSpeed(wristAngle);
+    double speed = -Robot.oi.controller.getY(Hand.kLeft) * 0.05;
+    Robot.wrist.setSpeed(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
