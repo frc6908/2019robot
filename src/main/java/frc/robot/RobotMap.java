@@ -9,6 +9,8 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
@@ -46,4 +48,7 @@ public class RobotMap {
     
     public static DoubleSolenoid
         solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
+
+    public static Compressor
+        compressor = new Compressor(0);
 }
