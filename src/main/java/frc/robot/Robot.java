@@ -24,7 +24,7 @@ public class Robot extends TimedRobot {
     public static OI oi;
 
     // Initialize Subsystems Here
-    // public static Drivetrain drivetrain = new Drivetrain();
+    public static Drivetrain drivetrain = new Drivetrain();
     public static Vision vision = new Vision();
     public static Arm arm = new Arm();
     public static Wrist wrist = new Wrist();
