@@ -27,18 +27,18 @@ public class DrivePath extends Command {
     rightFollower;
 
   public DrivePath(Trajectory l, Trajectory r) {
-    leftTrajectory = l;
-    rightTrajectory = r;
+    // leftTrajectory = l;
+    // rightTrajectory = r;
 
-    leftFollower = new EncoderFollower(leftTrajectory);
-    rightFollower = new EncoderFollower(rightTrajectory);
+    // leftFollower = new EncoderFollower(leftTrajectory);
+    // rightFollower = new EncoderFollower(rightTrajectory);
 
-    leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
-    rightFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
-    leftFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
-    rightFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
+    // leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
+    // rightFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev, Constants.kDriveWheelDiameter);
+    // leftFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
+    // rightFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
 
-    requires(Robot.drivetrain);
+    // requires(Robot.drivetrain);
   }
 
   @Override
@@ -47,15 +47,15 @@ public class DrivePath extends Command {
 
   @Override
   protected void execute() {
-    double leftSpeed = leftFollower.calculate(-Robot.drivetrain.getLeftEncoderTicks());
-    double rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoderTicks());
+    // double leftSpeed = leftFollower.calculate(-Robot.drivetrain.getLeftEncoderTicks());
+    // double rightSpeed = rightFollower.calculate(Robot.drivetrain.getRightEncoderTicks());
     
-    double gyroHeading = -Robot.drivetrain.getGyroAngle();
-    double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
-    double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
-    double turn = 0.8 * (-1.0 / 80.0) * angleDifference;
+    // double gyroHeading = -Robot.drivetrain.getGyroAngle();
+    // double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
+    // double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
+    // double turn = 0.8 * (-1.0 / 80.0) * angleDifference;
 
-    Robot.drivetrain.drive(leftSpeed+turn, rightSpeed-turn);
+    // Robot.drivetrain.drive(leftSpeed+turn, rightSpeed-turn);
   }
 
   @Override

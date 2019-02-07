@@ -20,17 +20,17 @@ public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private Spark
-    leftIntakeMotor = RobotMap.leftIntakeMotor,
-    rightIntakeMotor = RobotMap.rightIntakeMotor;
+  //private Spark
+    //leftIntakeMotor = RobotMap.leftIntakeMotor,
+    //rightIntakeMotor = RobotMap.rightIntakeMotor;
   
-  private DoubleSolenoid
-    solenoidOuttake = RobotMap.solenoidOuttake;
+  //private DoubleSolenoid
+    //solenoidOuttake = RobotMap.solenoidOuttake;
 
-  public void setLeftIntakeMotor(double speed) {
-    leftIntakeMotor.set(speed);
-  }
-
+  //public void setLeftIntakeMotor(double speed) {
+    //leftIntakeMotor.set(speed);
+  //}
+/*
   public void setRightIntakeMotor(double speed) {
     rightIntakeMotor.set(speed);
   }
@@ -42,7 +42,7 @@ public class Intake extends Subsystem {
     else
       solenoidOuttake.set(Value.kReverse);
   }
-
+*/
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

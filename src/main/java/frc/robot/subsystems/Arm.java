@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -27,6 +28,9 @@ public class Arm extends Subsystem {
     armSlaveMotor = RobotMap.armSlaveMotor;
 
   public Arm() {
+    armMasterMotor.setNeutralMode(NeutralMode.Brake);
+    armSlaveMotor.setNeutralMode(NeutralMode.Brake);
+
     armMasterMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
 
     armMasterMotor.setSensorPhase(false);

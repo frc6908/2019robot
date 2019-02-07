@@ -21,14 +21,14 @@ public class TimedIntakeCargo extends TimedCommand {
     super(timeout);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    // requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setLeftIntakeMotor(1);
-    Robot.intake.setRightIntakeMotor(-1);
+    // Robot.intake.setLeftIntakeMotor(1);
+    // Robot.intake.setRightIntakeMotor(-1);
   }
 
   // Called repeatedly when this Command is scheduled to run

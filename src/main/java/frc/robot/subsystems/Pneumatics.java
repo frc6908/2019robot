@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.pneumatics.Compressor;
 
 /**
  * Add your docs here.
@@ -21,6 +20,11 @@ public class Pneumatics extends Subsystem {
   public void turnOn ()
   {
     RobotMap.compressor.setClosedLoopControl(true);
+  }
+
+  public void turnOff()
+  {
+    RobotMap.compressor.setClosedLoopControl(false);
   }
 
   public boolean getEnabled()
@@ -45,6 +49,6 @@ public class Pneumatics extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new Compressor());
+    // setDefaultCommand(new Compressor());
   }
 }

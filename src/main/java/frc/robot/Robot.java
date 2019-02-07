@@ -27,8 +27,8 @@ public class Robot extends TimedRobot {
     public static Drivetrain drivetrain = new Drivetrain();
     public static Vision vision = new Vision();
     public static Arm arm = new Arm();
-    public static Wrist wrist = new Wrist();
-    public static Intake intake = new Intake();
+    //public static Wrist wrist = new Wrist();
+    //public static Intake intake = new Intake();
     public static Pneumatics pneumatics = new Pneumatics();
 
     Command m_autonomousCommand;
@@ -40,6 +40,8 @@ public class Robot extends TimedRobot {
         // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
+        pneumatics.turnOn();
+        // pneumatics.turnOff();
     }
 
     @Override

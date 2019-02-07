@@ -17,10 +17,10 @@ public class Constants {
 
     // Drivetrain Subsystem Ports
     public static final int
-        kfrontLeftMotor = 0,
-        kbackleftMotor = 0,
-        kfrontRightMotor = 0,
-        kbackRightMotor = 0,
+        kfrontLeftMotor = 2,
+        kbackleftMotor = 4,
+        kfrontRightMotor = 5,
+        kbackRightMotor = 3,
         kLeftDriveEncoderChannelA = 0,
         kLeftDriveEncoderChannelB = 0,
         kRightDriveEncoderChannelA = 0,
@@ -38,8 +38,8 @@ public class Constants {
 
     // Arm Subsystem Ports
     public static final int
-        kArmMasterMotor = 0,
-        kArmSlaveMotor = 0;
+        kArmMasterMotor = 6,
+        kArmSlaveMotor = 7;
 
     // Arm Control Constants
     public static final double
@@ -85,5 +85,6 @@ public class Constants {
     // Pneumatic Constants
     public static final int
         kForwardChannel = 0,
-        kReverseChannel = 1;
+        kReverseChannel = 1,
+        kCompressorPort = 0;
 }

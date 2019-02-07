@@ -14,7 +14,7 @@ public class IntakeCargo extends Command {
   public IntakeCargo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    // requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
@@ -25,8 +25,8 @@ public class IntakeCargo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.setLeftIntakeMotor(1);
-    Robot.intake.setRightIntakeMotor(-1);
+    // Robot.intake.setLeftIntakeMotor(1);
+    // Robot.intake.setRightIntakeMotor(-1);
   }
 
   // Make this return true when this Command no longer needs to run execute()
