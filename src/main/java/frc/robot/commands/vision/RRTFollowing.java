@@ -19,7 +19,7 @@ public class RRTFollowing extends Command {
 
   public RRTFollowing() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.vision);
+    // requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
   NetworkTableEntry yEntry1;

@@ -14,7 +14,7 @@ import frc.robot.Robot;
 public class ManualWristControl extends Command {
   public ManualWristControl() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.wrist);
+    //requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class ManualWristControl extends Command {
   @Override
   protected void execute() {
     double speed = -Robot.oi.controller.getY(Hand.kLeft) * 0.05;
-    Robot.wrist.setSpeed(speed);
+    //Robot.wrist.setSpeed(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

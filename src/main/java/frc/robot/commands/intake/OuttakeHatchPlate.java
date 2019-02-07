@@ -15,13 +15,13 @@ public class OuttakeHatchPlate extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     super(1);
-    requires(Robot.intake);
+    //requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setSolenoidPosition(true);
+    // Robot.intake.setSolenoidPosition(true);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,7 +38,7 @@ public class OuttakeHatchPlate extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.intake.setSolenoidPosition(false);
+    // Robot.intake.setSolenoidPosition(false);
   }
 
   // Called when another command which requires one or more of the same

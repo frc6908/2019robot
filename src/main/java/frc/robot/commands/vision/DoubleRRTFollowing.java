@@ -19,7 +19,7 @@ public class DoubleRRTFollowing extends Command {
 
   public DoubleRRTFollowing() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.vision);
+    // requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
   NetworkTableEntry yEntry1;
