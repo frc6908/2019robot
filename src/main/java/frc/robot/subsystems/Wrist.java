@@ -21,44 +21,44 @@ import frc.robot.commands.wrist.ManualWristControl;
  */
 public class Wrist extends Subsystem {
 
-  // private WPI_TalonSRX
-  //   wristMotor = RobotMap.wristMotor;
+  private WPI_TalonSRX
+    wristMotor = RobotMap.wristMotor;
 
   public Wrist() {
-    // wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
 
-    // wristMotor.setSensorPhase(false);
-    // wristMotor.setInverted(false);
+    wristMotor.setSensorPhase(false);
+    wristMotor.setInverted(true);
 
-    // wristMotor.configNominalOutputForward(0, 0);
-    // wristMotor.configNominalOutputReverse(0, 0);
-    // wristMotor.configPeakOutputForward(1, 0);
-    // wristMotor.configPeakOutputReverse(-1, 0);
+    wristMotor.configNominalOutputForward(0, 0);
+    wristMotor.configNominalOutputReverse(0, 0);
+    wristMotor.configPeakOutputForward(1, 0);
+    wristMotor.configPeakOutputReverse(-1, 0);
 
-    // wristMotor.selectProfileSlot(0, 0);
-    // wristMotor.config_kF(0, Constants.kWristF,0);
-    // wristMotor.config_kP(0, Constants.kWristP, 0);
-    // wristMotor.config_kI(0, Constants.kWristI, 0);
-    // wristMotor.config_kD(0, Constants.kWristD, 0);
+    wristMotor.selectProfileSlot(0, 0);
+    wristMotor.config_kF(0, Constants.kWristF,0);
+    wristMotor.config_kP(0, Constants.kWristP, 0);
+    wristMotor.config_kI(0, Constants.kWristI, 0);
+    wristMotor.config_kD(0, Constants.kWristD, 0);
     
-    // wristMotor.configMotionCruiseVelocity(Constants.kWristCruiseVelocity, 0);
-    // wristMotor.configMotionAcceleration(Constants.kWristAcceleration, 0);
+    wristMotor.configMotionCruiseVelocity(Constants.kWristCruiseVelocity, 0);
+    wristMotor.configMotionAcceleration(Constants.kWristAcceleration, 0);
 
-    // wristMotor.setSelectedSensorPosition(0, 0, 0);
+    wristMotor.setSelectedSensorPosition(0, 0, 0);
   }
 
-  // public void setPosition(double position) {
-  //   wristMotor.set(ControlMode.MotionMagic, position);    
-  // }
+  public void setPosition(double position) {
+    wristMotor.set(ControlMode.MotionMagic, position);    
+  }
   
-  // public void setSpeed(double speed) {
-  //   // wristMotor.set(speed);
-  // }
+  public void setSpeed(double speed) {
+    wristMotor.set(speed);
+  }
   
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    //setDefaultCommand(new ManualWristControl());
+    setDefaultCommand(new ManualWristControl());
   }
 }

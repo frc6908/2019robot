@@ -63,7 +63,7 @@ public class RRTFollowing extends Command {
     if(throttle > 1) throttle = 1;
     turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
     prev = offset;
-    Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
+    // Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
   }
 
   // Make this return true when this Command no longer needs to run execute()

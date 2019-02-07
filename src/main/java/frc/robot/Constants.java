@@ -54,7 +54,7 @@ public class Constants {
 
     // Wrist Subsystem Ports
     public static final int
-        kWristMotor = 0;
+        kWristMotor = 8;
 
     // Wrist Control Constants
     public static final int

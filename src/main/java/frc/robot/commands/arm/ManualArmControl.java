@@ -10,6 +10,7 @@ package frc.robot.commands.arm;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ManualArmControl extends Command {
   public ManualArmControl() {
@@ -22,8 +23,9 @@ public class ManualArmControl extends Command {
 
   @Override
   protected void execute() {
-    double speed = -Robot.oi.controller.getY(Hand.kLeft) * 0.6;
+    double speed = -Robot.oi.controller.getY(Hand.kLeft) * 0.4;
     Robot.arm.setSpeed(speed);
+    System.out.println("Speed: " + Robot.arm.getSpeed());
   }
 
   @Override

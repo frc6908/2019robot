@@ -67,6 +67,11 @@ public class Arm extends Subsystem {
     armMasterMotor.set(ControlMode.PercentOutput, voltage/armMasterMotor.getBusVoltage());
   }
 
+  public double getSpeed()
+  {
+    return armMasterMotor.getMotorOutputVoltage(); 
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new ManualArmControl());

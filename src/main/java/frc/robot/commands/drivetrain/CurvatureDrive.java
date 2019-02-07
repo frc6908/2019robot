@@ -16,27 +16,27 @@ public class CurvatureDrive extends Command {
   public CurvatureDrive() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    // requires(Robot.drivetrain);
   }
 
-  // Called just before this Command runs the first time
-  @Override
+  // // Called just before this Command runs the first time
+  // @Override
   protected void initialize() {
       RobotMap.gyro.reset();
-      Robot.drivetrain.stop();
+      // Robot.drivetrain.stop();
   }
 
-  // Called repeatedly when this Command is scheduled to run
+  // // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
       double speed = 0.5*-Robot.oi.controller.getY(Hand.kRight);
       double turn = 0.5*Robot.oi.controller.getX(Hand.kRight);
       boolean quick = Robot.oi.controller.getBumper(Hand.kLeft);
-      Robot.drivetrain.curve(speed, turn, quick);
+      // Robot.drivetrain.curve(speed, turn, quick);
   }
 
   // Make this return true when this Command no longer needs to run execute()
-  @Override
+  // @Override
   protected boolean isFinished() {
     return false;
   }

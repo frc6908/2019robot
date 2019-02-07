@@ -32,8 +32,8 @@ public class RobotMap {
     
     public static WPI_TalonSRX
         armMasterMotor = new WPI_TalonSRX(Constants.kArmMasterMotor),
-        armSlaveMotor = new WPI_TalonSRX(Constants.kArmSlaveMotor);
-        // wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
+        armSlaveMotor = new WPI_TalonSRX(Constants.kArmSlaveMotor),
+        wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
     
     //public static Spark
         //leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),

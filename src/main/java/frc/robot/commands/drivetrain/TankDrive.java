@@ -16,14 +16,14 @@ public class TankDrive extends Command {
   public TankDrive() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    // requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
       RobotMap.gyro.reset();
-      Robot.drivetrain.stop();
+      // Robot.drivetrain.stop();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,7 +32,7 @@ public class TankDrive extends Command {
       double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
       double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
       double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
-      Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
+      // Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
   }
 
   // Make this return true when this Command no longer needs to run execute()
