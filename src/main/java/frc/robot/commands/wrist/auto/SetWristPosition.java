@@ -14,7 +14,6 @@ public class SetWristPosition extends Command {
   private double
     position;
 
-
   public SetWristPosition(double position) {
     this.position = position;
     //requires(Robot.wrist);

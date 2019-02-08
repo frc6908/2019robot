@@ -18,7 +18,6 @@ public class RRTFollowing extends Command {
   private double prev, offset, turn, size, throttle;
 
   public RRTFollowing() {
-    // Use requires() here to declare subsystem dependencies
     // requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
@@ -28,8 +27,6 @@ public class RRTFollowing extends Command {
   NetworkTableEntry size1;
   NetworkTableEntry size2;
 
-
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     prev = 0;
@@ -66,19 +63,15 @@ public class RRTFollowing extends Command {
     // Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

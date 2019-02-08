@@ -1,0 +1,2 @@
+# FRC Team 6908 Infuzed 2019 Robot Code
+This repository contains code for [Team 6908](https://inspirenc.us/frc-6908 "FRC Team 6908 Infuzed")'s 2019 robot, for the **FIRST Robotics Competition** 2019 game, **Destination: Deep Space**.

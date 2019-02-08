@@ -10,14 +10,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.intake.OuttakeHatchPlate;
+import frc.robot.commands.pneumatics.OuttakeHatchPlate;
 
 /**
- * Add your docs here.
+ * Subsystem that controls the pneumatic hatch plate system
  */
 public class Pneumatics extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  private DoubleSolenoid
+    solenoidOuttake = RobotMap.solenoidOuttake;
 
   public void turnOn() {
     RobotMap.compressor.setClosedLoopControl(true);
@@ -32,20 +32,15 @@ public class Pneumatics extends Subsystem {
       return enabled;
   }
 
-  public boolean getPressureSwitch()
-  {
+  public boolean getPressureSwitch() {
     boolean pressureSwitch = RobotMap.compressor.getPressureSwitchValue();
     return pressureSwitch;
   }
 
-  public double getCurrent()
-  {
+  public double getCurrent() {
     double current = RobotMap.compressor.getCompressorCurrent();
     return current;
   }
-
-  private DoubleSolenoid
-    solenoidOuttake = RobotMap.solenoidOuttake;
   
   // forwards is true, backwards is false
   public void setSolenoidPosition(boolean forwardBack) {
@@ -58,8 +53,6 @@ public class Pneumatics extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new Compressor());
     setDefaultCommand(new OuttakeHatchPlate());
   }
 }

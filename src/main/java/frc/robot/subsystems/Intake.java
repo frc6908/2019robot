@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * Subsystem that controls cargo ball intake functionality
  */
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
@@ -23,10 +23,7 @@ public class Intake extends Subsystem {
   //private Spark
     //leftIntakeMotor = RobotMap.leftIntakeMotor,
     //rightIntakeMotor = RobotMap.rightIntakeMotor;
-  
-  //private DoubleSolenoid
-    //solenoidOuttake = RobotMap.solenoidOuttake;
-
+    
   //public void setLeftIntakeMotor(double speed) {
     //leftIntakeMotor.set(speed);
   //}
@@ -34,18 +31,8 @@ public class Intake extends Subsystem {
   public void setRightIntakeMotor(double speed) {
     rightIntakeMotor.set(speed);
   }
-  
-  // forwards is true, backwards is false
-  public void setSolenoidPosition(boolean forwardBack) {
-    if(forwardBack)
-      solenoidOuttake.set(Value.kForward);
-    else
-      solenoidOuttake.set(Value.kReverse);
-  }
 */
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
   }
 }

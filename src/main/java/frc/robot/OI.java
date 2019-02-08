@@ -21,7 +21,6 @@ import frc.robot.commands.vision.DoubleRRTFollowing;
 public class OI {
     public Joystick
         driveStick = new Joystick(Constants.kDriveStickPort);
-        //rightStick = new Joystick(Constants.kRightStickPort);
 
     public XboxController
         operatorController = new XboxController(Constants.kOperatorController);
@@ -31,6 +30,5 @@ public class OI {
 
     public OI() {
         alignWithTarget.whileHeld(new DoubleRRTFollowing());
-
     }
 }
