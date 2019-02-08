@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -67,8 +66,7 @@ public class Arm extends Subsystem {
     armMasterMotor.set(ControlMode.PercentOutput, voltage/armMasterMotor.getBusVoltage());
   }
 
-  public double getSpeed()
-  {
+  public double getSpeed() {
     return armMasterMotor.getMotorOutputVoltage(); 
   }
 

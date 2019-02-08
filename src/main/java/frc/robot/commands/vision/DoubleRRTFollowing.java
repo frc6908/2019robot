@@ -18,7 +18,6 @@ public class DoubleRRTFollowing extends Command {
   private double prev, offset, turn, area1, area2, throttle;
 
   public DoubleRRTFollowing() {
-    // Use requires() here to declare subsystem dependencies
     // requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
@@ -28,8 +27,6 @@ public class DoubleRRTFollowing extends Command {
   NetworkTableEntry size1;
   NetworkTableEntry size2;
 
-
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     prev = 0;
@@ -38,7 +35,7 @@ public class DoubleRRTFollowing extends Command {
     area1 = 0;
     area2 = 0;
     throttle = 0;
-    // initaialize network tables
+    // initialize network tables
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("RRTFollowing");
     xEntry1 = table.getEntry("centerX1");
@@ -71,23 +68,18 @@ public class DoubleRRTFollowing extends Command {
       double difference = (area1 - area2) * 0.002;
       Robot.drivetrain.infuzedDrive(-difference, difference);
     }
-      
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.drivetrain.infuzedDrive(0, 0);
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.vision.RRTFollowing;
 
 /**
- * Subsystem that controls all robot vision capabilities
+ * Subsystem that controls all robot vision processing capabilities
  */
 public class Vision extends Subsystem {
   
@@ -19,7 +19,6 @@ public class Vision extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
     // setDefaultCommand(new RRTFollowing());
   }
 }

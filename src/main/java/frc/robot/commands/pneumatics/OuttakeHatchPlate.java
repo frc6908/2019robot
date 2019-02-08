@@ -5,47 +5,50 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.intake;
+package frc.robot.commands.pneumatics;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class OuttakeHatchPlate extends Command {
+  private final boolean
+    in = false,
+    out = true;
+
+  private final long
+    delay = 500;
+
   public OuttakeHatchPlate() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    super(1);
     requires(Robot.pneumatics);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.pneumatics.setSolenoidPosition(false);
+    Robot.pneumatics.setSolenoidPosition(in);
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     if(Robot.oi.operatorController.getBumper(Hand.kLeft)) {
-      Robot.pneumatics.setSolenoidPosition(true);
+      long actuationTime = System.currentTimeMillis();
+      Robot.pneumatics.setSolenoidPosition(out);
+      while(System.currentTimeMillis() - actuationTime < delay) {
+        // Wait for 0.5s to pass before resetting the piston
+      }
+      Robot.pneumatics.setSolenoidPosition(in);
     }
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }
