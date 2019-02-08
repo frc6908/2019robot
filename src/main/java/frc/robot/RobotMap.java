@@ -46,8 +46,8 @@ public class RobotMap {
     //     leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
     //     rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
     
-    //public static DoubleSolenoid
-        //solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
+    public static DoubleSolenoid
+        solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
 
     public static Compressor
         compressor = new Compressor(Constants.kCompressorPort);

@@ -57,7 +57,7 @@ public class DoubleRRTFollowing extends Command {
     double centerX = xEntry1.getDouble(-1000) + ((xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/ 2);
     area1 = size1.getDouble(0);
     area2 = size2.getDouble(0);
-    if(centerX == 0) offset = 0;
+    if (centerX == 0) offset = 0;
     else offset = 160-centerX;
     // double tapeSize = Vision.getTapeSize();
 
@@ -65,14 +65,14 @@ public class DoubleRRTFollowing extends Command {
     if(throttle > 1) throttle = 1;
     turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
     prev = offset;
-    // if (Math.abs(throttle - turn) >= 0.05)
-      // Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
-    // else if (area1 != 0 && area2 != 0) {
+    if (Math.abs(throttle - turn) >= 0.05)
+      Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
+    else if (area1 != 0 && area2 != 0) {
       double difference = (area1 - area2) * 0.002;
-      // Robot.drivetrain.infuzedDrive(-difference, difference);
+      Robot.drivetrain.infuzedDrive(-difference, difference);
     }
       
-  // }
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -83,6 +83,7 @@ public class DoubleRRTFollowing extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.drivetrain.infuzedDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same

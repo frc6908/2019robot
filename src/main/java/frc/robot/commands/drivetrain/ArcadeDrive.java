@@ -5,38 +5,43 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.arm;
+package frc.robot.commands.drivetrain;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ManualArmControl extends Command {
-  public ManualArmControl() {
-    requires(Robot.arm);
+public class ArcadeDrive extends Command {
+  public ArcadeDrive() {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.drivetrain);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double speed = -Robot.oi.operatorController.getY(Hand.kLeft) * 0.4;
-    Robot.arm.setSpeed(speed);
-    System.out.println("Speed: " + Robot.arm.getSpeed());
+    double turn = Robot.oi.driveStick.getX() * 0.5;
+    double speed = -Robot.oi.driveStick.getY() * 0.5;
+    Robot.drivetrain.infuzedDrive(speed + turn, speed - turn);
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

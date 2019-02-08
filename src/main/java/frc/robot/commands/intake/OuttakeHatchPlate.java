@@ -7,6 +7,7 @@
 
 package frc.robot.commands.intake;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -15,30 +16,32 @@ public class OuttakeHatchPlate extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     super(1);
-    //requires(Robot.intake);
+    requires(Robot.pneumatics);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // Robot.intake.setSolenoidPosition(true);
+    Robot.pneumatics.setSolenoidPosition(false);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Robot.oi.operatorController.getBumper(Hand.kLeft)) {
+      Robot.pneumatics.setSolenoidPosition(true);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    // Robot.intake.setSolenoidPosition(false);
   }
 
   // Called when another command which requires one or more of the same

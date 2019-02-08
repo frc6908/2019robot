@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.drivetrain.ArcadeDrive;
 import frc.robot.commands.drivetrain.CurvatureDrive;
 
 /**
@@ -36,7 +37,7 @@ public class Drivetrain extends Subsystem {
     public DifferentialDrive drivebase;
 
     public Drivetrain() {
-       // rightMotors.setInverted(true);
+       rightMotors.setInverted(true);
         drivebase = new DifferentialDrive(leftMotors, rightMotors);
         //SmartDashboard.putData(drivebase);
     }
@@ -82,6 +83,6 @@ public class Drivetrain extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new CurvatureDrive());
+        setDefaultCommand(new ArcadeDrive());
     }
 }
