@@ -29,9 +29,9 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
-      double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
-      double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
+      // double leftSpeed = Robot.oi.controller.getY(Hand.kLeft);
+      // double rightSpeed = Robot.oi.controller.getY(Hand.kRight);
+      // double accel = (1-(Robot.oi.controller.getTriggerAxis(Hand.kLeft)*0.7));
       // Robot.drivetrain.drive(-leftSpeed*accel, -rightSpeed*accel);
   }
 

@@ -79,8 +79,9 @@ public class Constants {
 
     // Joystick Constants
     public static final int
-        kLeftStickPort = 0,
-        kRightStickPort = 1;
+        kDriveStickPort = 1,
+        kAlignWithTargetButton = 2,
+        kOperatorController = 3;
     
     // Pneumatic Constants
     public static final int

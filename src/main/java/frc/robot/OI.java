@@ -9,6 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.vision.DoubleRRTFollowing;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,12 +20,17 @@ import edu.wpi.first.wpilibj.XboxController;
  */
 public class OI {
     public Joystick
-        leftStick = new Joystick(Constants.kLeftStickPort),
-        rightStick = new Joystick(Constants.kRightStickPort);
+        driveStick = new Joystick(Constants.kDriveStickPort);
+        //rightStick = new Joystick(Constants.kRightStickPort);
 
     public XboxController
-        controller = new XboxController(3);
-        
+        operatorController = new XboxController(Constants.kOperatorController);
+    
+    public Button 
+        alignWithTarget = new JoystickButton(driveStick, Constants.kAlignWithTargetButton);
+
     public OI() {
+        alignWithTarget.whileHeld(new DoubleRRTFollowing());
+
     }
 }
