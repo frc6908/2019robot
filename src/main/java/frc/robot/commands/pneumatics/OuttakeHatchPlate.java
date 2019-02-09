@@ -9,6 +9,7 @@ package frc.robot.commands.pneumatics;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.DoubleSolenoid.*;
 import frc.robot.Robot;
 
 public class OuttakeHatchPlate extends Command {
@@ -30,13 +31,19 @@ public class OuttakeHatchPlate extends Command {
 
   @Override
   protected void execute() {
-    if(Robot.oi.operatorController.getBumper(Hand.kLeft)) {
+    Robot.pneumatics.solenoidOuttake.set(Value.kOff);
+    if(Robot.oi.operatorController.getBumperPressed(Hand.kLeft)) {
+      System.out.println("Receiving input from joystick");
       long actuationTime = System.currentTimeMillis();
       Robot.pneumatics.setSolenoidPosition(out);
       while(System.currentTimeMillis() - actuationTime < delay) {
         // Wait for 0.5s to pass before resetting the piston
       }
       Robot.pneumatics.setSolenoidPosition(in);
+      long resetTime = System.currentTimeMillis();
+      while(System.currentTimeMillis() - resetTime < delay) {
+        // Wait to turn off
+      }
     }
   }
 

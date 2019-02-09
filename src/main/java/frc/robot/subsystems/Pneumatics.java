@@ -16,7 +16,7 @@ import frc.robot.commands.pneumatics.OuttakeHatchPlate;
  * Subsystem that controls the pneumatic hatch plate system
  */
 public class Pneumatics extends Subsystem {
-  private DoubleSolenoid
+  public DoubleSolenoid
     solenoidOuttake = RobotMap.solenoidOuttake;
 
   public void turnOn() {
@@ -33,8 +33,7 @@ public class Pneumatics extends Subsystem {
   }
 
   public boolean getPressureSwitch() {
-    boolean pressureSwitch = RobotMap.compressor.getPressureSwitchValue();
-    return pressureSwitch;
+    return RobotMap.compressor.getPressureSwitchValue();
   }
 
   public double getCurrent() {

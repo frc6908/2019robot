@@ -85,7 +85,7 @@ public class Constants {
     
     // Pneumatic Constants
     public static final int
-        kForwardChannel = 0,
-        kReverseChannel = 1,
+        kForwardChannel = 1,
+        kReverseChannel = 0,
         kCompressorPort = 0;
 }

@@ -34,11 +34,11 @@ public class Drivetrain extends Subsystem {
     //     leftDriveEncoder = RobotMap.leftDriveEncoder,
     //     rightDriveEncoder = RobotMap.rightDriveEncoder;
         
-    public DifferentialDrive drivebase;
+    // public DifferentialDrive drivebase;
 
     public Drivetrain() {
        rightMotors.setInverted(true);
-        drivebase = new DifferentialDrive(leftMotors, rightMotors);
+        // drivebase = new DifferentialDrive(leftMotors, rightMotors);
         //SmartDashboard.putData(drivebase);
     }
     
@@ -48,11 +48,11 @@ public class Drivetrain extends Subsystem {
     }
 
     public void drive(double leftSpeed, double rightSpeed) {
-        drivebase.tankDrive(leftSpeed, rightSpeed);
+        // drivebase.tankDrive(leftSpeed, rightSpeed);
     }
 
     public void curve(double speed, double rotation, boolean isQuickTurn){
-        drivebase.curvatureDrive(speed, rotation, isQuickTurn);
+        // drivebase.curvatureDrive(speed, rotation, isQuickTurn);
     }
 
     public void stop() {
