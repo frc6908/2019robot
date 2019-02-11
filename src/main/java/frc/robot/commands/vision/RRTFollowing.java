@@ -18,7 +18,7 @@ public class RRTFollowing extends Command {
   private double prev, offset, turn, size, throttle;
 
   public RRTFollowing() {
-    // requires(Robot.vision);
+    requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
   NetworkTableEntry yEntry1;
@@ -29,6 +29,7 @@ public class RRTFollowing extends Command {
 
   @Override
   protected void initialize() {
+    System.out.println("Entered single vision command");
     prev = 0;
     offset = 0;
     turn = 0;
@@ -51,16 +52,22 @@ public class RRTFollowing extends Command {
     // Retrieve values regarding RRT attributes
     // double tapeCenter = Vision.getTapeCenter();
     double centerX = xEntry1.getDouble(-1000);
+    System.out.println("centerX" + centerX);
     if(centerX == 0) offset = 0;
     else offset = 160-centerX;
     // double tapeSize = Vision.getTapeSize();
     double size = size1.getDouble(0);
-
-    throttle = Constants.kThrottleP/size;
+    // System.out.println("Offset: " + offset);
+    // System.out.println("Size: " + size);
+    if(size == 0) throttle = 0;
+    else throttle = Constants.kThrottleP/size;
+    if(throttle > 1) {System.out.println("going over 1");}
     if(throttle > 1) throttle = 1;
+    // System.out.println("Throttle: " + throttle);
     turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
     prev = offset;
-    // Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
+    // System.out.println("Turn: " + turn);
+    Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
   }
 
   @Override

@@ -7,22 +7,24 @@
 
 package frc.robot.commands.intake;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeCargo extends Command {
-  public IntakeCargo() {
-    // requires(Robot.intake);
+public class IntakeOuttake extends Command {
+  public IntakeOuttake() {
+    requires(Robot.intake);
   }
 
   @Override
   protected void initialize() {
+    System.out.println("Entering IntakeOuttake default command");
   }
 
   @Override
   protected void execute() {
-    // Robot.intake.setLeftIntakeMotor(1);
-    // Robot.intake.setRightIntakeMotor(-1);
+    // Outtake
+    Robot.intake.setLeftIntakeMotor(Robot.oi.operatorController.getTriggerAxis(Hand.kLeft));
   }
 
   @Override

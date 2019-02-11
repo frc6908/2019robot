@@ -10,6 +10,7 @@ package frc.robot.commands.vision;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -18,7 +19,7 @@ public class DoubleRRTFollowing extends Command {
   private double prev, offset, turn, area1, area2, throttle;
 
   public DoubleRRTFollowing() {
-    // requires(Robot.vision);
+    requires(Robot.vision);
   }
   NetworkTableEntry xEntry1;
   NetworkTableEntry yEntry1;
@@ -29,6 +30,7 @@ public class DoubleRRTFollowing extends Command {
 
   @Override
   protected void initialize() {
+    System.out.println("Entered Vision Command");
     prev = 0;
     offset = 0;
     turn = 0;

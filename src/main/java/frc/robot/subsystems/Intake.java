@@ -8,10 +8,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.intake.IntakeOuttake;
 
 /**
  * Subsystem that controls cargo ball intake functionality
@@ -20,13 +19,13 @@ public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  //private Spark
-    //leftIntakeMotor = RobotMap.leftIntakeMotor,
+  private Spark
+    leftIntakeMotor = RobotMap.leftIntakeMotor;
     //rightIntakeMotor = RobotMap.rightIntakeMotor;
     
-  //public void setLeftIntakeMotor(double speed) {
-    //leftIntakeMotor.set(speed);
-  //}
+  public void setLeftIntakeMotor(double speed) {
+    leftIntakeMotor.set(speed);
+  }
 /*
   public void setRightIntakeMotor(double speed) {
     rightIntakeMotor.set(speed);
@@ -34,5 +33,6 @@ public class Intake extends Subsystem {
 */
   @Override
   public void initDefaultCommand() {
+    setDefaultCommand(new IntakeOuttake());
   }
 }

@@ -35,20 +35,20 @@ public class RobotMap {
         armSlaveMotor = new WPI_TalonSRX(Constants.kArmSlaveMotor),
         wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
     
-    //public static Spark
-        //leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
+    public static Spark
+        leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor);
         //rightIntakeMotor = new Spark(Constants.kRightIntakeMotor);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);
     
-    // public static Encoder
-    //     leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
-    //     rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
+    public static Encoder
+        leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
+        rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
     
-    public static DoubleSolenoid
-        solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
+    // public static DoubleSolenoid
+    //     solenoidOuttake = new DoubleSolenoid(Constants.kForwardChannel, Constants.kReverseChannel);
 
-    public static Compressor
-        compressor = new Compressor(Constants.kCompressorPort);
+    // public static Compressor
+    //     compressor = new Compressor(Constants.kCompressorPort);
 }

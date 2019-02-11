@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.vision.DoubleRRTFollowing;
 import frc.robot.commands.vision.RRTFollowing;
 
 /**
@@ -19,6 +20,5 @@ public class Vision extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    // setDefaultCommand(new RRTFollowing());
   }
 }

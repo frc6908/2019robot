@@ -16,42 +16,42 @@ import frc.robot.commands.pneumatics.OuttakeHatchPlate;
  * Subsystem that controls the pneumatic hatch plate system
  */
 public class Pneumatics extends Subsystem {
-  public DoubleSolenoid
-    solenoidOuttake = RobotMap.solenoidOuttake;
+  // public DoubleSolenoid
+  //   solenoidOuttake = RobotMap.solenoidOuttake;
 
-  public void turnOn() {
-    RobotMap.compressor.setClosedLoopControl(true);
-  }
+  // public void turnOn() {
+  //   RobotMap.compressor.setClosedLoopControl(true);
+  // }
 
-  public void turnOff() {
-    RobotMap.compressor.setClosedLoopControl(false);
-  }
+  // public void turnOff() {
+  //   RobotMap.compressor.setClosedLoopControl(false);
+  // }
 
-  public boolean getEnabled() {
-      boolean enabled = RobotMap.compressor.enabled();
-      return enabled;
-  }
+  // public boolean getEnabled() {
+  //     boolean enabled = RobotMap.compressor.enabled();
+  //     return enabled;
+  // }
 
-  public boolean getPressureSwitch() {
-    return RobotMap.compressor.getPressureSwitchValue();
-  }
+  // public boolean getPressureSwitch() {
+  //   return RobotMap.compressor.getPressureSwitchValue();
+  // }
 
-  public double getCurrent() {
-    double current = RobotMap.compressor.getCompressorCurrent();
-    return current;
-  }
+  // public double getCurrent() {
+  //   double current = RobotMap.compressor.getCompressorCurrent();
+  //   return current;
+  // }
   
-  // forwards is true, backwards is false
-  public void setSolenoidPosition(boolean forwardBack) {
-    if(forwardBack)
-      solenoidOuttake.set(DoubleSolenoid.Value.kForward);
-    else
-      solenoidOuttake.set(DoubleSolenoid.Value.kReverse);
-  }
+  // // forwards is true, backwards is false
+  // public void setSolenoidPosition(boolean forwardBack) {
+  //   if(forwardBack)
+  //     solenoidOuttake.set(DoubleSolenoid.Value.kForward);
+  //   else
+  //     solenoidOuttake.set(DoubleSolenoid.Value.kReverse);
+  // }
 
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new OuttakeHatchPlate());
+    // setDefaultCommand(new OuttakeHatchPlate());
   }
 }

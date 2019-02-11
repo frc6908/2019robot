@@ -13,7 +13,7 @@ import frc.robot.Robot;
 
 public class ManualWristControl extends Command {
   public ManualWristControl() {
-    // requires(Robot.wrist);
+    requires(Robot.wrist);
   }
 
   @Override
@@ -22,8 +22,8 @@ public class ManualWristControl extends Command {
 
   @Override
   protected void execute() {
-    // double speed = -Robot.oi.operatorController.getY(Hand.kRight) * 0.3;
-    // Robot.wrist.setSpeed(speed);
+    double speed = -Robot.oi.operatorController.getY(Hand.kRight);
+    Robot.wrist.setSpeed(speed);
   }
 
   @Override

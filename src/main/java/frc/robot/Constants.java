@@ -21,10 +21,10 @@ public class Constants {
         kbackleftMotor = 4,
         kfrontRightMotor = 5,
         kbackRightMotor = 3,
-        kLeftDriveEncoderChannelA = 0,
-        kLeftDriveEncoderChannelB = 0,
+        kLeftDriveEncoderChannelA = 2,
+        kLeftDriveEncoderChannelB = 3,
         kRightDriveEncoderChannelA = 0,
-        kRightDriveEncoderChannelB = 0,
+        kRightDriveEncoderChannelB = 1,
         kDriveEncoderTicksPerRev = 255;
     
     // Drivetrain Control Constants
@@ -69,7 +69,7 @@ public class Constants {
     
     public static final int
         kLeftIntakeMotor = 0,
-        kRightIntakeMotor = 0;
+        kRightIntakeMotor = 1;
 
     // Vision Control Constants
     public static final double

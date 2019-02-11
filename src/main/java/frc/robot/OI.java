@@ -9,10 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.vision.DoubleRRTFollowing;
+import frc.robot.commands.intake.IntakeBall;
+import frc.robot.commands.vision.RRTFollowing;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,9 +26,11 @@ public class OI {
         operatorController = new XboxController(Constants.kOperatorController);
     
     public Button 
-        alignWithTarget = new JoystickButton(driveStick, Constants.kAlignWithTargetButton);
+        alignWithTarget = new JoystickButton(driveStick, Constants.kAlignWithTargetButton),
+        intakeBall = new JoystickButton(driveStick, 1);
 
     public OI() {
-        alignWithTarget.whileHeld(new DoubleRRTFollowing());
+        alignWithTarget.whileHeld(new RRTFollowing());
+        intakeBall.whileHeld(new IntakeBall());
     }
 }

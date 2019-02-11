@@ -24,6 +24,8 @@ public class ArcadeDrive extends Command {
     double turn = Robot.oi.driveStick.getX() * 0.5;
     double speed = -Robot.oi.driveStick.getY() * 0.5;
     Robot.drivetrain.infuzedDrive(speed + turn, speed - turn);
+    // System.out.println("Left ticks: " + Robot.drivetrain.getLeftEncoderTicks());
+    // System.out.println("Right ticks: " + Robot.drivetrain.getRightEncoderTicks());
   }
 
   @Override

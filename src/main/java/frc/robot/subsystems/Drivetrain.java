@@ -30,9 +30,9 @@ public class Drivetrain extends Subsystem {
     private AHRS
         gyro = RobotMap.gyro;
     
-    // private Encoder
-    //     leftDriveEncoder = RobotMap.leftDriveEncoder,
-    //     rightDriveEncoder = RobotMap.rightDriveEncoder;
+    private Encoder
+        leftDriveEncoder = RobotMap.leftDriveEncoder,
+        rightDriveEncoder = RobotMap.rightDriveEncoder;
         
     // public DifferentialDrive drivebase;
 
@@ -60,21 +60,21 @@ public class Drivetrain extends Subsystem {
         rightMotors.stopMotor();
     }
 
-    // public Encoder getLeftEncoder() {
-    //     return leftDriveEncoder;
-    // }
+    public Encoder getLeftEncoder() {
+        return leftDriveEncoder;
+    }
 
-    // public Encoder getRightEncoder() {
-    //     return rightDriveEncoder;
-    // }
+    public Encoder getRightEncoder() {
+        return rightDriveEncoder;
+    }
 
-    // public int getLeftEncoderTicks() {
-    //     return leftDriveEncoder.get();
-    // }
+    public int getLeftEncoderTicks() {
+        return leftDriveEncoder.get();
+    }
 
-    // public int getRightEncoderTicks() {
-    //     return rightDriveEncoder.get();
-    // }
+    public int getRightEncoderTicks() {
+        return rightDriveEncoder.get();
+    }
 
     public double getGyroAngle() {
         return gyro.getAngle();
