@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.drivetrain.auto.DoNothing;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Wrist;
 
@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         oi = new OI();
-        // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+        // m_chooser.setDefaultOption("Default Auto", new SimpleFourFoot());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
         // pneumatics.turnOn();
@@ -58,11 +58,13 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        m_autonomousCommand = m_chooser.getSelected();
+        // m_autonomousCommand = m_chooser.getSelected();
         
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.start();
-        }
+        // if (m_autonomousCommand != null) {
+        //     m_autonomousCommand.start();
+        // }
+        m_autonomousCommand = new DoNothing(); // Change to any command group in commands.drivetrain.auto
+        m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 
     @Override
@@ -80,6 +82,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        System.out.println("Gyro: " + RobotMap.gyro.getAngle());
+        System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
+        System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
     }
 
     @Override

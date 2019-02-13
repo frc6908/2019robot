@@ -37,7 +37,7 @@ public class Drivetrain extends Subsystem {
     // public DifferentialDrive drivebase;
 
     public Drivetrain() {
-       rightMotors.setInverted(true);
+        // rightMotors.setInverted(true);
         // drivebase = new DifferentialDrive(leftMotors, rightMotors);
         //SmartDashboard.putData(drivebase);
     }
