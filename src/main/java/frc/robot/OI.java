@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.intake.IntakeBall;
-import frc.robot.commands.vision.RRTFollowing;
+import frc.robot.commands.vision.DoubleRRTFollowing;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,7 +30,7 @@ public class OI {
         intakeBall = new JoystickButton(driveStick, 1);
 
     public OI() {
-        alignWithTarget.whileHeld(new RRTFollowing());
+        alignWithTarget.whileHeld(new DoubleRRTFollowing());
         intakeBall.whileHeld(new IntakeBall());
     }
 }

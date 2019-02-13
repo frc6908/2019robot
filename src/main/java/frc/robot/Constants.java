@@ -74,13 +74,14 @@ public class Constants {
     // Vision Control Constants
     public static final double
         kThrottleP = 125,
-        kTurnP = 0.0015,
-        kTurnD = 0.00025;
+        kTurnP = 0.0015, //0.0015
+        kTurnD = 0.0003,
+        kCameraWidth = 320; //0.00025
 
     // Joystick Constants
     public static final int
         kDriveStickPort = 1,
-        kAlignWithTargetButton = 2,
+        kAlignWithTargetButton = 8,
         kOperatorController = 3;
     
     // Pneumatic Constants
