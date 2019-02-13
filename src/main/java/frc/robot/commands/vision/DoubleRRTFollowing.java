@@ -16,17 +16,11 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class DoubleRRTFollowing extends Command {
-  private double prev, offset, turn, area1, area2, throttle;
+  private double prev, offset, turn, area1, area2, throttleRight, throttleLeft, cameraWidth;
 
   public DoubleRRTFollowing() {
     requires(Robot.vision);
   }
-  NetworkTableEntry xEntry1;
-  NetworkTableEntry yEntry1;
-  NetworkTableEntry xEntry2;
-  NetworkTableEntry yEntry2;
-  NetworkTableEntry size1;
-  NetworkTableEntry size2;
 
   @Override
   protected void initialize() {
@@ -36,16 +30,10 @@ public class DoubleRRTFollowing extends Command {
     turn = 0;
     area1 = 0;
     area2 = 0;
-    throttle = 0;
+    throttleRight = 0;
+    throttleLeft = 0;
+    cameraWidth = Constants.kCameraWidth;
     // initialize network tables
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable("RRTFollowing");
-    xEntry1 = table.getEntry("centerX1");
-    yEntry1 = table .getEntry("centerY1");
-    size1 = table.getEntry("size1");
-    xEntry2 = table.getEntry("centerX2");
-    yEntry2 = table.getEntry("centerY2");
-    size2 = table.getEntry("size2");
   }
 
   // Move the robot according to the values recieved from the vision coprocessor
@@ -53,23 +41,30 @@ public class DoubleRRTFollowing extends Command {
   protected void execute() {
     // Retrieve values regarding RRT attributes
     // double tapeCenter = Vision.getTapeCenter();
-    double centerX = xEntry1.getDouble(-1000) + ((xEntry2.getDouble(-1000) - xEntry1.getDouble(-1000))/ 2);
-    area1 = size1.getDouble(0);
-    area2 = size2.getDouble(0);
+    double centerX = Robot.vision.getCenterX();
+    area1 = Robot.vision.getLeftTapeSize();
+    area2 = Robot.vision.getRightTapeSize();
     if (centerX == 0) offset = 0;
-    else offset = 160-centerX;
+    else offset = (cameraWidth/2)-centerX;
+
+    double averageSize = (area1 + area2)/2;
+
+    // System.out.println((area1+area2)/2);
+    
     // double tapeSize = Vision.getTapeSize();
 
-    throttle = Constants.kThrottleP/area1;
-    if(throttle > 1) throttle = 1;
+    throttleRight = (Constants.kThrottleP/area1);
+    throttleLeft = (Constants.kThrottleP/area2);
+    if(throttleRight > 1) throttleRight = 1;
+    if (throttleLeft > 1) throttleLeft = 1;
+
+    System.out.println("throttleLeft : " + throttleLeft);
+    System.out.println("throttle right: " + throttleRight);
+
     turn = (offset * Constants.kTurnP) + (Constants.kTurnD * ((offset - prev) / Constants.kDT));
     prev = offset;
-    if (Math.abs(throttle - turn) >= 0.05)
-      Robot.drivetrain.infuzedDrive(throttle-turn, throttle+turn);
-    else if (area1 != 0 && area2 != 0) {
-      double difference = (area1 - area2) * 0.002;
-      Robot.drivetrain.infuzedDrive(-difference, difference);
-    }
+
+    Robot.drivetrain.infuzedDrive(throttleLeft-turn, throttleRight + turn);
   }
 
   @Override
