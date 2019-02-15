@@ -85,9 +85,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println("Gyro: " + RobotMap.gyro.getAngle());
-        System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
-        System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
+        // System.out.println("Gyro: " + RobotMap.gyro.getAngle());
+        // System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
+        // System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
     }
 
     @Override

@@ -18,7 +18,7 @@ public class OuttakeHatchPlate extends Command {
     out = true;
 
   private final long
-    delay = 500;
+    delay = 300;
 
   public OuttakeHatchPlate() {
     requires(Robot.pneumatics);
@@ -32,7 +32,7 @@ public class OuttakeHatchPlate extends Command {
   @Override
   protected void execute() {
     Robot.pneumatics.solenoidOuttake.set(Value.kOff);
-    System.out.println("Running OuttakeHatchlate");
+    // System.out.println("Running OuttakeHatchlate");
     if(Robot.oi.operatorController.getBumperPressed(Hand.kLeft)) {
       System.out.println("Receiving input from joystick");
       long actuationTime = System.currentTimeMillis();
