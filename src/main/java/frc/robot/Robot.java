@@ -13,9 +13,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.drivetrain.auto.DoNothing;
+import frc.robot.commands.drivetrain.auto.FastCurve;
+import frc.robot.commands.drivetrain.auto.FiveFootStraight;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Wrist;
 
@@ -28,7 +31,7 @@ public class Robot extends TimedRobot {
     public static Arm arm = new Arm();
     public static Wrist wrist = new Wrist();
     public static Intake intake = new Intake();
-    // public static Pneumatics pneumatics = new Pneumatics();
+    public static Pneumatics pneumatics = new Pneumatics();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -39,7 +42,7 @@ public class Robot extends TimedRobot {
         // m_chooser.setDefaultOption("Default Auto", new SimpleFourFoot());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
-        // pneumatics.turnOn();
+        pneumatics.turnOn();
         // pneumatics.turnOff();
     }
 
@@ -63,7 +66,7 @@ public class Robot extends TimedRobot {
         // if (m_autonomousCommand != null) {
         //     m_autonomousCommand.start();
         // }
-        m_autonomousCommand = new DoNothing(); // Change to any command group in commands.drivetrain.auto
+        m_autonomousCommand = new FastCurve(); // Change to any command group in commands.drivetrain.auto
         m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 

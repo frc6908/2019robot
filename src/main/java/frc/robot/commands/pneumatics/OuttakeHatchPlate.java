@@ -21,30 +21,31 @@ public class OuttakeHatchPlate extends Command {
     delay = 500;
 
   public OuttakeHatchPlate() {
-    // requires(Robot.pneumatics);
+    requires(Robot.pneumatics);
   }
 
   @Override
   protected void initialize() {
-    // Robot.pneumatics.setSolenoidPosition(in);
+    Robot.pneumatics.setSolenoidPosition(in);
   }
 
   @Override
   protected void execute() {
-    // Robot.pneumatics.solenoidOuttake.set(Value.kOff);
-    // if(Robot.oi.operatorController.getBumperPressed(Hand.kLeft)) {
-    //   System.out.println("Receiving input from joystick");
-    //   long actuationTime = System.currentTimeMillis();
-    //   Robot.pneumatics.setSolenoidPosition(out);
-    //   while(System.currentTimeMillis() - actuationTime < delay) {
-    //     // Wait for 0.5s to pass before resetting the piston
-    //   }
-    //   Robot.pneumatics.setSolenoidPosition(in);
-    //   long resetTime = System.currentTimeMillis();
-    //   while(System.currentTimeMillis() - resetTime < delay) {
-    //     // Wait to turn off
-    //   }
-    // }
+    Robot.pneumatics.solenoidOuttake.set(Value.kOff);
+    System.out.println("Running OuttakeHatchlate");
+    if(Robot.oi.operatorController.getBumperPressed(Hand.kLeft)) {
+      System.out.println("Receiving input from joystick");
+      long actuationTime = System.currentTimeMillis();
+      Robot.pneumatics.setSolenoidPosition(out);
+      while(System.currentTimeMillis() - actuationTime < delay) {
+        // Wait for 0.5s to pass before resetting the piston
+      }
+      Robot.pneumatics.setSolenoidPosition(in);
+      long resetTime = System.currentTimeMillis();
+      while(System.currentTimeMillis() - resetTime < delay) {
+        // Wait to turn off
+      }
+    }
   }
 
   @Override

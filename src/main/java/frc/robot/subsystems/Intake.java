@@ -20,17 +20,17 @@ public class Intake extends Subsystem {
   // here. Call these from Commands.
 
   private Spark
-    leftIntakeMotor = RobotMap.leftIntakeMotor;
-    //rightIntakeMotor = RobotMap.rightIntakeMotor;
+    leftIntakeMotor = RobotMap.leftIntakeMotor,
+    rightIntakeMotor = RobotMap.rightIntakeMotor;
     
   public void setLeftIntakeMotor(double speed) {
     leftIntakeMotor.set(speed);
   }
-/*
+
   public void setRightIntakeMotor(double speed) {
     rightIntakeMotor.set(speed);
   }
-*/
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new IntakeOuttake());

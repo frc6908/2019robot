@@ -37,6 +37,11 @@ public class DrivePath extends Command {
   @Override
   protected void initialize() {
     System.out.println("Initializing DrivePath");
+
+    Robot.drivetrain.getLeftEncoder().reset();
+    Robot.drivetrain.getRightEncoder().reset();
+    Robot.drivetrain.gyro.reset();
+
     leftFollower = new EncoderFollower(leftTrajectory);
     rightFollower = new EncoderFollower(rightTrajectory);
 
@@ -57,8 +62,8 @@ public class DrivePath extends Command {
     double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
     double turn = 0.8 * (-1.0 / 80.0) * angleDifference;
 
-    System.out.println("leftSpeed : " + leftSpeed);
-    System.out.println("rightSpeed: " + rightSpeed);
+    // System.out.println("leftSpeed : " + leftSpeed);
+    // System.out.println("rightSpeed: " + rightSpeed);
     Robot.drivetrain.infuzedDrive(leftSpeed+turn, rightSpeed-turn);
   }
 

@@ -53,8 +53,8 @@ public class DoubleRRTFollowing extends Command {
     
     // double tapeSize = Vision.getTapeSize();
 
-    throttleRight = (Constants.kThrottleP/area1);
-    throttleLeft = (Constants.kThrottleP/area2);
+    throttleRight = (Constants.kThrottleP)/area1;
+    throttleLeft = ((Constants.kThrottleP + 50)/area2);
     if(throttleRight > 1) throttleRight = 1;
     if (throttleLeft > 1) throttleLeft = 1;
 

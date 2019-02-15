@@ -27,7 +27,7 @@ public class Drivetrain extends Subsystem {
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
     
-    private AHRS
+    public AHRS
         gyro = RobotMap.gyro;
     
     private Encoder
@@ -37,7 +37,7 @@ public class Drivetrain extends Subsystem {
     // public DifferentialDrive drivebase;
 
     public Drivetrain() {
-        // rightMotors.setInverted(true);
+        rightMotors.setInverted(true);
         // drivebase = new DifferentialDrive(leftMotors, rightMotors);
         //SmartDashboard.putData(drivebase);
     }

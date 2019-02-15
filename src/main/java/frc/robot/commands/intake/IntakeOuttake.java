@@ -25,6 +25,7 @@ public class IntakeOuttake extends Command {
   protected void execute() {
     // Outtake
     Robot.intake.setLeftIntakeMotor(Robot.oi.operatorController.getTriggerAxis(Hand.kLeft));
+    Robot.intake.setRightIntakeMotor(-(Robot.oi.operatorController.getTriggerAxis(Hand.kLeft)));
   }
 
   @Override

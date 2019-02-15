@@ -13,14 +13,14 @@ import jaci.pathfinder.Trajectory;
 
 import java.io.File;
 
-public class TenForwardSixRight extends CommandGroup {
+public class FastCurve extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public TenForwardSixRight() {
-    System.out.println("Running TenForwardSixRight");
-    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/TenForwardSixRight_left.csv"));
-    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/TenForwardSixRight_right.csv"));
+  public FastCurve() {
+    System.out.println("Running FastCurve");
+    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FastCurve_left.csv"));
+    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FastCurve_right.csv"));
 
     addSequential(new DrivePath(l, r));
   }
