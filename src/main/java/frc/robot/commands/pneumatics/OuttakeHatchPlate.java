@@ -32,6 +32,7 @@ public class OuttakeHatchPlate extends Command {
   @Override
   protected void execute() {
     Robot.pneumatics.solenoidOuttake.set(Value.kOff);
+    System.out.println(Robot.pneumatics.getPressureSwitch());
     // System.out.println("Running OuttakeHatchlate");
     if(Robot.oi.operatorController.getBumperPressed(Hand.kLeft)) {
       System.out.println("Receiving input from joystick");

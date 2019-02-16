@@ -74,7 +74,7 @@ public class Constants {
     // Vision Control Constants
     public static final double
         kThrottleP = 65,
-        kTurnP = 0.003, //0.0015
+        kTurnP = 0.002, //0.0015
         kTurnD = 0.0003,
         kCameraWidth = 320; //0.00025
 
@@ -86,7 +86,7 @@ public class Constants {
     
     // Pneumatic Constants
     public static final int
-        kForwardChannel = 0,
-        kReverseChannel = 1,
+        kForwardChannel = 1,
+        kReverseChannel = 0,
         kCompressorPort = 0;
 }
