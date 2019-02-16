@@ -5,23 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.drivetrain.auto;
+package frc.robot.commands.superstructure;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import jaci.pathfinder.Pathfinder;
-import jaci.pathfinder.Trajectory;
+import frc.robot.commands.drivetrain.auto.CenterStartLeftCargoShip;
+import frc.robot.commands.pneumatics.OuttakeHatch;
 
-import java.io.File;
-
-public class FastCurve extends CommandGroup {
+public class CenterStartLeftCargoShipSingleHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public FastCurve() {
-    System.out.println("Running FastCurve");
-    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FastCurve_left.csv"));
-    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FastCurve_right.csv"));
-
-    addSequential(new DrivePath(l, r, false));
+  public CenterStartLeftCargoShipSingleHatch() {
+    addSequential(new CenterStartLeftCargoShip(false));
+    addSequential(new OuttakeHatch(0.3));
   }
 }

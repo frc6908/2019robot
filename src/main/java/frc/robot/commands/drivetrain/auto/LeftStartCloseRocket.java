@@ -7,23 +7,21 @@
 
 package frc.robot.commands.drivetrain.auto;
 
-import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.wrist.auto.SetWristPosition;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 
 import java.io.File;
 
-public class FiveFootStraight extends CommandGroup {
+public class LeftStartCloseRocket extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public FiveFootStraight() {
-    System.out.println("Running FiveFootStraight");
-    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FiveFootStraight_left.csv"));
-    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FiveFootStraight_right.csv"));
+  public LeftStartCloseRocket(boolean reversed) {
+    System.out.println("Running LeftStartCloseRocket");
+    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/LeftStartCloseRocket_left.csv"));
+    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/LeftStartCloseRocket_right.csv"));
 
-    addSequential(new DrivePath(l, r, false));
+    addSequential(new DrivePath(l, r, reversed));
   }
 }

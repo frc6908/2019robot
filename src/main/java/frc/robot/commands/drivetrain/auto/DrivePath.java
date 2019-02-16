@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/*     (c) 2018 SECOND.First(int third, string pranav :). All Rights Reserved.*/
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -25,11 +25,15 @@ public class DrivePath extends Command {
   private EncoderFollower
     leftFollower,
     rightFollower;
+  
+  private boolean
+    reverse;
 
-  public DrivePath(Trajectory l, Trajectory r) {
+  public DrivePath(Trajectory l, Trajectory r, boolean reverse) {
     System.out.println("Running DrivePath");
     leftTrajectory = l;
     rightTrajectory = r;
+    this.reverse = reverse;
 
     requires(Robot.drivetrain);
   }
@@ -56,15 +60,17 @@ public class DrivePath extends Command {
   protected void execute() {
     double leftSpeed = leftFollower.calculate(Robot.drivetrain.getLeftEncoderTicks());
     double rightSpeed = rightFollower.calculate(-Robot.drivetrain.getRightEncoderTicks());
-    
     double gyroHeading = -Robot.drivetrain.getGyroAngle();
     double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
     double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
-    double turn = 0.8 * (-1.0 / 80.0) * angleDifference;
-
-    // System.out.println("leftSpeed : " + leftSpeed);
-    // System.out.println("rightSpeed: " + rightSpeed);
-    Robot.drivetrain.infuzedDrive(leftSpeed+turn, rightSpeed-turn);
+    double turn = 1.8 /*0.8*/ * (-1.0 / 70.0) * angleDifference;
+    
+    if(reverse){
+      Robot.drivetrain.infuzedDrive(-(rightSpeed-turn), -(leftSpeed+turn));  
+    }
+    else{
+      Robot.drivetrain.infuzedDrive(leftSpeed+turn, rightSpeed-turn);
+    }
   }
 
   @Override
