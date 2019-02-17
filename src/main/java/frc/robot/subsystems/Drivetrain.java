@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -24,7 +25,7 @@ import frc.robot.commands.drivetrain.CurvatureDrive;
 public class Drivetrain extends Subsystem {
     
     private SpeedControllerGroup
-        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backleftDrive),
+        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftDrive, RobotMap.backLeftDrive),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightDrive, RobotMap.backRightDrive);
     
     public AHRS
@@ -37,6 +38,10 @@ public class Drivetrain extends Subsystem {
     // public DifferentialDrive drivebase;
 
     public Drivetrain() {
+        RobotMap.frontLeftDrive.setNeutralMode(NeutralMode.Brake);
+        RobotMap.frontRightDrive.setNeutralMode(NeutralMode.Brake);
+        RobotMap.backLeftDrive.setNeutralMode(NeutralMode.Brake);
+        RobotMap.backRightDrive.setNeutralMode(NeutralMode.Brake);
         rightMotors.setInverted(true);
         // drivebase = new DifferentialDrive(leftMotors, rightMotors);
         //SmartDashboard.putData(drivebase);

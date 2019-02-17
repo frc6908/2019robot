@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.pneumatics.CompressorManager;
 import frc.robot.commands.pneumatics.OuttakeHatchPlate;
 
 /**
@@ -32,8 +33,8 @@ public class Pneumatics extends Subsystem {
       return enabled;
   }
 
-  public boolean getPressureSwitch() {
-    return RobotMap.compressor.getPressureSwitchValue();
+  public boolean getPressureLow() {
+    return !RobotMap.compressor.getPressureSwitchValue();
   }
 
   public double getCurrent() {
@@ -52,6 +53,6 @@ public class Pneumatics extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new OuttakeHatchPlate());
+    setDefaultCommand(new CompressorManager());
   }
 }

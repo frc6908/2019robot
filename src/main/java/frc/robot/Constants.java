@@ -82,7 +82,8 @@ public class Constants {
     public static final int
         kDriveStickPort = 1,
         kAlignWithTargetButton = 8,
-        kOperatorController = 3;
+        kOperatorController = 3,
+        kHatchButton = 5;
     
     // Pneumatic Constants
     public static final int

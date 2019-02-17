@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.intake.IntakeBall;
+import frc.robot.commands.pneumatics.OuttakeHatch;
+import frc.robot.commands.pneumatics.OuttakeHatchPlate;
 import frc.robot.commands.vision.DoubleRRTFollowing;
 
 /**
@@ -27,10 +29,12 @@ public class OI {
     
     public Button 
         alignWithTarget = new JoystickButton(driveStick, Constants.kAlignWithTargetButton),
-        intakeBall = new JoystickButton(driveStick, 1);
+        intakeBall = new JoystickButton(driveStick, 1),
+        outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton);
 
     public OI() {
         alignWithTarget.whileHeld(new DoubleRRTFollowing());
         intakeBall.whileHeld(new IntakeBall());
+        outtakeHatch.whenPressed(new OuttakeHatchPlate());
     }
 }

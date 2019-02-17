@@ -5,44 +5,50 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.drivetrain;
+package frc.robot.commands.pneumatics;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ArcadeDrive extends Command {
-  public ArcadeDrive() {
-    requires(Robot.drivetrain);
+public class CompressorManager extends Command {
+  public CompressorManager() {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.pneumatics);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.pneumatics.turnOff();
+    // Robot.pneumatics.turnOn();
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double speed;
-    if(Robot.oi.driveStick.getY() < 0.08) {
-      speed = -Robot.oi.driveStick.getY() * 0.5;
-    }
-    else {
-      speed = 0;
-    }
-    double turn = Robot.oi.driveStick.getX() * 0.5;
-    Robot.drivetrain.infuzedDrive(speed + turn, speed - turn);
-    // System.out.println("Left ticks: " + Robot.drivetrain.getLeftEncoderTicks());
-    // System.out.println("Right ticks: " + Robot.drivetrain.getRightEncoderTicks());
+      if (Robot.pneumatics.getPressureLow())
+      {
+        Robot.pneumatics.turnOn();
+      }
+      else
+      {
+        Robot.pneumatics.turnOff();
+      }
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

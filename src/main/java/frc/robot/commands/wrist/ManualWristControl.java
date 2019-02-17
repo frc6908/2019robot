@@ -22,7 +22,7 @@ public class ManualWristControl extends Command {
 
   @Override
   protected void execute() {
-    double speed = -0.3*Robot.oi.operatorController.getY(Hand.kRight);
+    double speed = -0.4*Robot.oi.operatorController.getY(Hand.kRight);
     Robot.wrist.setSpeed(speed);
   }
 
