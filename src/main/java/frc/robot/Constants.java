@@ -28,13 +28,14 @@ public class Constants {
         kDriveEncoderTicksPerRev = 255;
     
     // Drivetrain Control Constants
-    public static double
+    public static final double
         kDriveP = 0.022,
         kDriveI = 0,
         kDriveD = 0.1,
         kDriveVMax = 8.62,
         kDriveA = 0,
-        kDriveWheelDiameter = 0.5;
+        kDriveWheelDiameter = 0.5,
+        kDriveGearRatio = 10.75; //10.75:1
 
     // Arm Subsystem Ports
     public static final int
