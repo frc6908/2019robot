@@ -8,15 +8,20 @@
 package frc.robot.commands.superstructure;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.drivetrain.auto.CenterStartLeftCargoShip;
-import frc.robot.commands.pneumatics.OuttakeHatch;
+import frc.robot.commands.drivetrain.auto.RampDrive;
+import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
 
-public class CenterStartLeftCargoShipSingleHatch extends CommandGroup {
+import frc.robot.Constants;
+
+public class CenterStartToLeftCargoShipHatch extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public CenterStartLeftCargoShipSingleHatch() {
-    addSequential(new CenterStartLeftCargoShip(false));
-    addSequential(new OuttakeHatch(0.3));
+  public CenterStartToLeftCargoShipHatch() {
+    addSequential(new RampDrive());
+    Constants.kDriveP = 0.001;
+    Constants.kDriveD = 0.1;
+    addSequential(new RampToLeftCargoShip());
+    // outtake hatch
   }
 }

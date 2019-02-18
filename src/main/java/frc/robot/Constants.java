@@ -28,11 +28,11 @@ public class Constants {
         kDriveEncoderTicksPerRev = 255;
     
     // Drivetrain Control Constants
-    public static final double
-        kDriveP = 0.002,
+    public static double
+        kDriveP = 0.022,
         kDriveI = 0,
-        kDriveD = 0.0001,
-        kDriveVMax = 9.08,
+        kDriveD = 0.1,
+        kDriveVMax = 8.62,
         kDriveA = 0,
         kDriveWheelDiameter = 0.5;
 
@@ -87,7 +87,7 @@ public class Constants {
     
     // Pneumatic Constants
     public static final int
-        kForwardChannel = 1,
-        kReverseChannel = 0,
+        kForwardChannel = 0,
+        kReverseChannel = 1,
         kCompressorPort = 0;
 }

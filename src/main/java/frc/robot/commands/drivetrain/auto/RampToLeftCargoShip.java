@@ -13,14 +13,14 @@ import jaci.pathfinder.Trajectory;
 
 import java.io.File;
 
-public class FiveTwoCurve extends CommandGroup {
+public class RampToLeftCargoShip extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public FiveTwoCurve() {
-    System.out.println("Running FiveTwoCurve");
-    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FiveTwoCurve_left.csv"));
-    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/FiveTwoCurve_right.csv"));
+  public RampToLeftCargoShip() {
+    System.out.println("Running RampToCargoShip");
+    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_left.csv"));
+    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_right.csv"));
 
     addSequential(new DrivePath(l, r, false));
   }

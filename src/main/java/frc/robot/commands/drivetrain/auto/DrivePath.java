@@ -63,8 +63,12 @@ public class DrivePath extends Command {
     double gyroHeading = -Robot.drivetrain.getGyroAngle();
     double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
     double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
-    double turn = 1.8 /*0.8*/ * (-1.0 / 70.0) * angleDifference;
+    double turn = 0.8 * (-1.0 / 80.0) * angleDifference; // 0.8, 80
     
+    System.out.println("Left speed: " + leftSpeed);
+    System.out.println("Right speed:" + rightSpeed);
+    System.out.println("Turn: " + turn);
+
     if(reverse){
       Robot.drivetrain.infuzedDrive(-(rightSpeed-turn), -(leftSpeed+turn));  
     }
@@ -80,7 +84,7 @@ public class DrivePath extends Command {
 
   @Override
   protected void end() {
-    Robot.drivetrain.stop();
+    Robot.drivetrain.infuzedDrive(0, 0);
   }
 
   @Override

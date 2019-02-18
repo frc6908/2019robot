@@ -12,9 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.drivetrain.auto.DoNothing;
-import frc.robot.commands.drivetrain.auto.FastCurve;
-import frc.robot.commands.drivetrain.auto.FiveFootStraight;
+import frc.robot.commands.superstructure.CenterStartToLeftCargoShipHatch;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
@@ -48,6 +46,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
+        System.out.println(RobotMap.gyro.getAngle());
     }
 
     @Override
@@ -66,7 +65,7 @@ public class Robot extends TimedRobot {
         // if (m_autonomousCommand != null) {
         //     m_autonomousCommand.start();
         // }
-        m_autonomousCommand = new FastCurve(); // Change to any command group in commands.drivetrain.auto
+        m_autonomousCommand = new CenterStartToLeftCargoShipHatch(); // Change to any command group in commands.drivetrain.auto
         m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 
@@ -88,6 +87,7 @@ public class Robot extends TimedRobot {
         // System.out.println("Gyro: " + RobotMap.gyro.getAngle());
         // System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
         // System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
+        System.out.println("Right encoder ticks: " + RobotMap.rightDriveEncoder.getRate());
     }
 
     @Override

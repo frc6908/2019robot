@@ -7,6 +7,7 @@
 
 package frc.robot.commands.pneumatics;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
@@ -29,7 +30,7 @@ public class OuttakeHatch extends TimedCommand {
   }
 
   // Called just before this Command runs the first time
-  @Override
+  @Override 
   protected void initialize() {
     Robot.pneumatics.setSolenoidPosition(in); // Initialize to in
     long storeTime = System.currentTimeMillis();
@@ -48,6 +49,7 @@ public class OuttakeHatch extends TimedCommand {
   @Override
   protected void end() {
     Robot.pneumatics.setSolenoidPosition(in);
+    long storeTime = System.currentTimeMillis();
   }
 
   // Called when another command which requires one or more of the same

@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.pneumatics.CompressorManager;
-import frc.robot.commands.pneumatics.OuttakeHatchPlate;
 
 /**
  * Subsystem that controls the pneumatic hatch plate system
@@ -48,6 +47,12 @@ public class Pneumatics extends Subsystem {
       solenoidOuttake.set(DoubleSolenoid.Value.kForward);
     else
       solenoidOuttake.set(DoubleSolenoid.Value.kReverse);
+
+    // long storeTime = System.currentTimeMillis();
+    // while(System.currentTimeMillis() - storeTime <= 0.3) {
+    //   // Wait for some time
+    // }
+    // solenoidOuttake.set(DoubleSolenoid.Value.kOff);
   }
 
 

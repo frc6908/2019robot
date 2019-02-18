@@ -22,7 +22,7 @@ public class ArcadeDrive extends Command {
   @Override
   protected void execute() {
     double speed;
-    if(Robot.oi.driveStick.getY() < 0.08) {
+    if(Math.abs(Robot.oi.driveStick.getY()) > 0.08) {
       speed = -Robot.oi.driveStick.getY() * 0.5;
     }
     else {
