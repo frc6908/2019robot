@@ -60,7 +60,8 @@ public class Wrist extends Subsystem {
   }
 
   public double getAngle() {
-      return wristMotor.getSelectedSensorPosition() / 4096;
+      System.out.println(wristMotor.getSelectedSensorPosition());
+      return 0 - (double) wristMotor.getSelectedSensorPosition() / 4096 * 360;
   }
   
   @Override

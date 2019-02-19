@@ -88,12 +88,12 @@ public class Robot extends TimedRobot {
         // System.out.println("Gyro: " + RobotMap.gyro.getAngle());
         // System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
         // System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
-        System.out.println("Left drive encoder: " + RobotMap.leftDriveEncoder.get());
-        System.out.println("Right drive encoder: " + RobotMap.rightDriveEncoder.get());
-        System.out.println("Wrist Motor Velocity: " + RobotMap.wristMotor.getSelectedSensorVelocity());
-        System.out.println("Arm Motor Velocity: " + RobotMap.armMasterMotor.getSelectedSensorVelocity());
-        System.out.println("Wrist angle: " + wrist.getAngle());
-        System.out.println("Arm Motor Angle: " + (90 - arm.getAngle()));
+        // System.out.println("Left drive encoder: " + RobotMap.leftDriveEncoder.get());
+        // System.out.println("Right drive encoder: " + RobotMap.rightDriveEncoder.get());
+        // System.out.println("Wrist Motor Velocity: " + RobotMap.wristMotor.getSelectedSensorVelocity());
+        // System.out.println("Arm Motor Velocity: " + RobotMap.armMasterMotor.getSelectedSensorVelocity());
+        // System.out.println("Wrist angle: " + wrist.getAngle());
+        // System.out.println("Arm Motor Angle: " + (arm.getAngle()));
     }
 
     @Override
