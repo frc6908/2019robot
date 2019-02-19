@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -55,7 +56,7 @@ public class Arm extends Subsystem {
   }
   
   public void setPosition(double position) {
-    armMasterMotor.set(ControlMode.MotionMagic, position);
+    armMasterMotor.set(ControlMode.MotionMagic, position, DemandType.ArbitraryFeedForward, Math.cos(90 - getAngle()));
   }
   
   public void setSpeed(double speed) {
@@ -68,6 +69,11 @@ public class Arm extends Subsystem {
 
   public double getSpeed() {
     return armMasterMotor.getMotorOutputVoltage(); 
+  }
+
+  public double getAngle()
+  {
+      return armMasterMotor.getSelectedSensorPosition() / 4096;
   }
 
   @Override

@@ -25,7 +25,7 @@ public class SetWristPosition extends Command {
 
   @Override
   protected void execute() {
-    //Robot.wrist.setPosition(position);
+    // Robot.wrist.setPosition(position);
   }
 
   @Override

@@ -8,12 +8,14 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.wrist.ManualWristControl;
 
@@ -50,11 +52,15 @@ public class Wrist extends Subsystem {
   }
 
   public void setPosition(double position) {
-    wristMotor.set(ControlMode.MotionMagic, position);    
+    wristMotor.set(ControlMode.MotionMagic, position, DemandType.ArbitraryFeedForward, 0.4*Math.cos(180 - (90 - getAngle()) - (180 - Robot.arm.getAngle())));    
   }
-  
+
   public void setSpeed(double speed) {
     wristMotor.set(speed);
+  }
+
+  public double getAngle() {
+      return wristMotor.getSelectedSensorPosition() / 4096;
   }
   
   @Override

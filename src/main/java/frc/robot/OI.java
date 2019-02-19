@@ -36,5 +36,6 @@ public class OI {
         alignWithTarget.whileHeld(new DoubleRRTFollowing());
         intakeBall.whileHeld(new IntakeBall());
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
+
     }
 }

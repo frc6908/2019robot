@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.drivetrain.auto.RampDrive;
+import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
 import frc.robot.commands.superstructure.CenterStartToLeftCargoShipHatch;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
@@ -46,7 +48,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
-        System.out.println(RobotMap.gyro.getAngle());
     }
 
     @Override
@@ -65,7 +66,7 @@ public class Robot extends TimedRobot {
         // if (m_autonomousCommand != null) {
         //     m_autonomousCommand.start();
         // }
-        m_autonomousCommand = new CenterStartToLeftCargoShipHatch(); // Change to any command group in commands.drivetrain.auto
+        m_autonomousCommand = new RampToLeftCargoShip(); // Change to any command group in commands.drivetrain.auto
         m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 
@@ -87,7 +88,12 @@ public class Robot extends TimedRobot {
         // System.out.println("Gyro: " + RobotMap.gyro.getAngle());
         // System.out.println("Right Encoder: " + RobotMap.rightDriveEncoder.get());
         // System.out.println("Left Encoder: " + RobotMap.leftDriveEncoder.get());
-        System.out.println("Right encoder ticks: " + RobotMap.rightDriveEncoder.getRate());
+        System.out.println("Left drive encoder: " + RobotMap.leftDriveEncoder.get());
+        System.out.println("Right drive encoder: " + RobotMap.rightDriveEncoder.get());
+        System.out.println("Wrist Motor Velocity: " + RobotMap.wristMotor.getSelectedSensorVelocity());
+        System.out.println("Arm Motor Velocity: " + RobotMap.armMasterMotor.getSelectedSensorVelocity());
+        System.out.println("Wrist angle: " + wrist.getAngle());
+        System.out.println("Arm Motor Angle: " + (90 - arm.getAngle()));
     }
 
     @Override

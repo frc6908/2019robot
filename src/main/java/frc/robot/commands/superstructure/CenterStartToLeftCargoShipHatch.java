@@ -19,9 +19,7 @@ public class CenterStartToLeftCargoShipHatch extends CommandGroup {
    */
   public CenterStartToLeftCargoShipHatch() {
     addSequential(new RampDrive());
-    Constants.kDriveP = 0.001;
-    Constants.kDriveD = 0.1;
-    addSequential(new RampToLeftCargoShip());
+    //addSequential(new RampToLeftCargoShip());
     // outtake hatch
   }
 }

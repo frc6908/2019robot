@@ -8,7 +8,9 @@
 package frc.robot.commands.drivetrain.auto;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.Constants;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
@@ -49,11 +51,13 @@ public class DrivePath extends Command {
     leftFollower = new EncoderFollower(leftTrajectory);
     rightFollower = new EncoderFollower(rightTrajectory);
 
-    leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev * Constants.kDriveGearRatio, Constants.kDriveWheelDiameter);
-    rightFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), Constants.kDriveEncoderTicksPerRev * Constants.kDriveGearRatio, Constants.kDriveWheelDiameter);
+    leftFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), (int) (Constants.kDriveEncoderTicksPerRev * Constants.kDriveGearRatio), Constants.kDriveWheelDiameter);
+    rightFollower.configureEncoder(Robot.drivetrain.getLeftEncoderTicks(), (int) (Constants.kDriveEncoderTicksPerRev * Constants.kDriveGearRatio), Constants.kDriveWheelDiameter);
     leftFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
     rightFollower.configurePIDVA(Constants.kDriveP, Constants.kDriveI, Constants.kDriveD, 1 / Constants.kDriveVMax, Constants.kDriveA);
 
+    SmartDashboard.putNumber("Left encoder rate: ", RobotMap.leftDriveEncoder.getRate() / 215 * 0.5 * Math.PI);
+    SmartDashboard.putNumber("Right encoder rate: ", RobotMap.rightDriveEncoder.getRate() / 215 * 0.5 * Math.PI);
   }
 
   @Override
@@ -64,11 +68,7 @@ public class DrivePath extends Command {
     double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
     double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
     double turn = 0.8 * (-1.0 / 80.0) * angleDifference; // 0.8, 80
-    
-    System.out.println("Left speed: " + leftSpeed);
-    System.out.println("Right speed:" + rightSpeed);
-    System.out.println("Turn: " + turn);
-
+  
     if(reverse){
       Robot.drivetrain.infuzedDrive(-(rightSpeed-turn), -(leftSpeed+turn));  
     }

@@ -25,13 +25,13 @@ public class Constants {
         kLeftDriveEncoderChannelB = 3,
         kRightDriveEncoderChannelA = 0,
         kRightDriveEncoderChannelB = 1,
-        kDriveEncoderTicksPerRev = 255;
+        kDriveEncoderTicksPerRev = 20;
     
     // Drivetrain Control Constants
     public static final double
-        kDriveP = 0.022,
+        kDriveP = .017,
         kDriveI = 0,
-        kDriveD = 0.1,
+        kDriveD = 0.05,
         kDriveVMax = 8.62,
         kDriveA = 0,
         kDriveWheelDiameter = 0.5,
