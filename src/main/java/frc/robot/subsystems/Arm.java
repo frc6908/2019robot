@@ -73,7 +73,11 @@ public class Arm extends Subsystem {
 
   public double getAngle()
   {
-      return (double) armMasterMotor.getSelectedSensorPosition() / 4096 * 360;
+      return 180 + ((double) armMasterMotor.getSelectedSensorPosition() / 4096 * 360);
+  }
+
+  public void zeroEncoder(){
+    armMasterMotor.setSelectedSensorPosition(0, 0, 0);
   }
 
   @Override

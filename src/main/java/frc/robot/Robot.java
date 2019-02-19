@@ -48,6 +48,15 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
+        if(RobotMap.armZeroSwitch.get() == true){
+            arm.zeroEncoder();
+            wrist.zeroEncoder();
+        }
+        SmartDashboard.putNumber("Wrist Motor Value", wrist.getSpeed());
+        SmartDashboard.putBoolean("Zero", RobotMap.armZeroSwitch.get());
+        SmartDashboard.putNumber("Wrist angle: ", wrist.getAngle());
+        SmartDashboard.putNumber("Arm Motor Angle: ", (arm.getAngle()));
+        SmartDashboard.putNumber("Theta: ", (180 - (90 - wrist.getAngle()) - (180 - arm.getAngle())));
     }
 
     @Override

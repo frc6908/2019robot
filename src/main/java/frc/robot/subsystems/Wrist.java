@@ -60,10 +60,18 @@ public class Wrist extends Subsystem {
   }
 
   public double getAngle() {
-      System.out.println(wristMotor.getSelectedSensorPosition());
+      //System.out.println(wristMotor.getSelectedSensorPosition());
       return 0 - (double) wristMotor.getSelectedSensorPosition() / 4096 * 360;
   }
-  
+
+  public double getSpeed(){
+    return wristMotor.get();
+  }
+
+  public void zeroEncoder(){
+    wristMotor.setSelectedSensorPosition(0, 0, 0);
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new ManualWristControl());

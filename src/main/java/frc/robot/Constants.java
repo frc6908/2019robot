@@ -91,4 +91,8 @@ public class Constants {
         kForwardChannel = 0,
         kReverseChannel = 1,
         kCompressorPort = 0;
+    
+    // Limit Switch Ports
+    public static final int 
+        kZeroSwitchChannel = 4;
 }

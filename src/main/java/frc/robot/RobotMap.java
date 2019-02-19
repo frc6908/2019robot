@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
@@ -51,4 +52,7 @@ public class RobotMap {
 
     public static Compressor
         compressor = new Compressor(Constants.kCompressorPort);
+
+    public static DigitalInput
+        armZeroSwitch = new DigitalInput(Constants.kZeroSwitchChannel);
 }
