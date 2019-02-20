@@ -34,7 +34,7 @@ public class OuttakeHatch extends TimedCommand {
   protected void initialize() {
     Robot.pneumatics.setSolenoidPosition(in); // Initialize to in
     long storeTime = System.currentTimeMillis();
-    while(System.currentTimeMillis() - storeTime <= 0.3) {
+    while(System.currentTimeMillis() - storeTime <= 300) {
       // Wait for some time
       System.out.println("Running outtake");
     }
