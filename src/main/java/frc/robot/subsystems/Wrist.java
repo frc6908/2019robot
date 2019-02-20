@@ -24,14 +24,15 @@ import frc.robot.commands.wrist.ManualWristControl;
  */
 public class Wrist extends Subsystem {
 
-  private WPI_TalonSRX
+  public WPI_TalonSRX
     wristMotor = RobotMap.wristMotor;
 
   public Wrist() {
     wristMotor.setNeutralMode(NeutralMode.Brake);
     wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
 
-    wristMotor.setSensorPhase(false);
+    // wristMotor.setSensorPhase(false);
+    wristMotor.setSensorPhase(true);
     wristMotor.setInverted(true);
 
     wristMotor.configNominalOutputForward(0, 0);
@@ -52,7 +53,7 @@ public class Wrist extends Subsystem {
   }
 
   public void setPosition(double position) {
-    wristMotor.set(ControlMode.MotionMagic, position, DemandType.ArbitraryFeedForward, 0.4*Math.cos(180 - (90 - getAngle()) - (180 - Robot.arm.getAngle())));    
+    wristMotor.set(ControlMode.MotionMagic, position, DemandType.ArbitraryFeedForward, (0.25*Math.cos(Math.toRadians(180 - (90 - Robot.wrist.getAngle()) - (180 - Robot.arm.getAngle())))));  
   }
 
   public void setSpeed(double speed) {
@@ -61,7 +62,8 @@ public class Wrist extends Subsystem {
 
   public double getAngle() {
       //System.out.println(wristMotor.getSelectedSensorPosition());
-      return 0 - (double) wristMotor.getSelectedSensorPosition() / 4096 * 360;
+      // return 0 - (double) wristMotor.getSelectedSensorPosition() / 4096 * 360;
+      return (double) wristMotor.getSelectedSensorPosition() / 4096 * 360;
   }
 
   public double getSpeed(){

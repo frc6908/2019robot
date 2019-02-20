@@ -9,6 +9,8 @@ package frc.robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMath;
+import frc.robot.Constants;
 
 public class ArcadeDrive extends Command {
   public ArcadeDrive() {
@@ -28,8 +30,13 @@ public class ArcadeDrive extends Command {
     else {
       speed = 0;
     }
+    double acceleration = Robot.oi.driveStick.getThrottle();
+    double throttleAcc = RobotMath.normalize(Constants.MAX_AXIS, Constants.MIN_AXIS, Constants.LOW_RANGE_TURN, Constants.HIGH_RANGE_TURN, acceleration);
+    // double turnAcc = RobotMath.normalize(Constants.MAX_AXIS, Constants.MIN_AXIS, Constants.HIGH_RANGE_TURN, Constants.HIGH_RANGE_TURN, acceleration);
     double turn = Robot.oi.driveStick.getX() * 0.5;
-    Robot.drivetrain.infuzedDrive(speed + turn, speed - turn);
+    Robot.drivetrain.infuzedDrive((speed + turn) * throttleAcc, (speed - turn) * throttleAcc);
+
+
     // System.out.println("Left ticks: " + Robot.drivetrain.getLeftEncoderTicks());
     // System.out.println("Right ticks: " + Robot.drivetrain.getRightEncoderTicks());
   }

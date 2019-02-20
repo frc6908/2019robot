@@ -18,7 +18,7 @@ public class IntakeOuttake extends Command {
 
   @Override
   protected void initialize() {
-    System.out.println("Entering IntakeOuttake default command");
+    // System.out.println("Entering IntakeOuttake default command");
   }
 
   @Override

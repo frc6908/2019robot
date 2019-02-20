@@ -22,7 +22,7 @@ public class ManualWristControl extends Command {
 
   @Override
   protected void execute() {
-    double speed = (0.25*Math.cos(Math.toRadians(180 - (90 - Robot.wrist.getAngle()) - (180 - Robot.arm.getAngle())))) + -0.3*Robot.oi.operatorController.getY(Hand.kRight);
+    double speed = (0.2*Math.cos(Math.toRadians(180 - (90 - Robot.wrist.getAngle()) - (180 - Robot.arm.getAngle())))) + -0.3*Robot.oi.operatorController.getY(Hand.kRight);
     Robot.wrist.setSpeed(speed);
   }
 

@@ -30,7 +30,7 @@ public class SetArmPosition extends Command {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return (Math.abs(Robot.arm.armMasterMotor.getSelectedSensorPosition() - position) < 10);
   }
 
   @Override

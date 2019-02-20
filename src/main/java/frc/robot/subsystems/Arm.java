@@ -23,7 +23,7 @@ import frc.robot.commands.arm.ManualArmControl;
  */
 public class Arm extends Subsystem {
 
-  private WPI_TalonSRX
+  public WPI_TalonSRX
     armMasterMotor = RobotMap.armMasterMotor,
     armSlaveMotor = RobotMap.armSlaveMotor;
 
@@ -33,7 +33,8 @@ public class Arm extends Subsystem {
 
     armMasterMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
 
-    armMasterMotor.setSensorPhase(false);
+    // armMasterMotor.setSensorPhase(false);
+    armMasterMotor.setSensorPhase(true);
     armMasterMotor.setInverted(false);
 
     armMasterMotor.configNominalOutputForward(0, 0);
@@ -71,9 +72,9 @@ public class Arm extends Subsystem {
     return armMasterMotor.getMotorOutputVoltage(); 
   }
 
-  public double getAngle()
-  {
-      return 180 + ((double) armMasterMotor.getSelectedSensorPosition() / 4096 * 360);
+  public double getAngle() {
+      // return 180 + ((double) armMasterMotor.getSelectedSensorPosition() / 4096 * 360);
+      return 180 - ((double) armMasterMotor.getSelectedSensorPosition() / 4096 * 360);
   }
 
   public void zeroEncoder(){

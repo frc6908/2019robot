@@ -10,11 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.drivetrain.auto.RampDrive;
 import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
-import frc.robot.commands.superstructure.CenterStartToLeftCargoShipHatch;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
@@ -57,6 +56,9 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Wrist angle: ", wrist.getAngle());
         SmartDashboard.putNumber("Arm Motor Angle: ", (arm.getAngle()));
         SmartDashboard.putNumber("Theta: ", (180 - (90 - wrist.getAngle()) - (180 - arm.getAngle())));
+        SmartDashboard.putNumber("Wrist encoder: ", wrist.wristMotor.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Arm encoder: ", arm.armMasterMotor.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Wrist V", wrist.wristMotor.getSelectedSensorVelocity());
     }
 
     @Override

@@ -35,7 +35,11 @@ public class Constants {
         kDriveVMax = 8.62,
         kDriveA = 0,
         kDriveWheelDiameter = 0.5,
-        kDriveGearRatio = 10.75; //10.75:1
+        kDriveGearRatio = 10.75,
+        MIN_AXIS = -1,
+        MAX_AXIS = 1,
+        LOW_RANGE_TURN = 0.2,
+        HIGH_RANGE_TURN = 1; //10.75:1
 
     // Arm Subsystem Ports
     public static final int
@@ -58,15 +62,15 @@ public class Constants {
         kWristMotor = 8;
 
     // Wrist Control Constants
-    public static final int
-        kWristF = 0,
-        kWristP = 0,
+    public static final double
+        kWristF = 1.2035,
+        kWristP = 1.5, //0.465
         kWristI = 0,
         kWristD = 0;
 
     public static final int
-        kWristCruiseVelocity = 0,
-        kWristAcceleration = 0;
+        kWristCruiseVelocity = 64,
+        kWristAcceleration = 64;
     
     public static final int
         kLeftIntakeMotor = 0,
@@ -84,7 +88,8 @@ public class Constants {
         kDriveStickPort = 1,
         kAlignWithTargetButton = 8,
         kOperatorController = 3,
-        kHatchButton = 5;
+        kHatchButton = 5,
+        kWristGroundIntakeButton = 1;
     
     // Pneumatic Constants
     public static final int
@@ -95,4 +100,23 @@ public class Constants {
     // Limit Switch Ports
     public static final int 
         kZeroSwitchChannel = 4;
+    
+    // Wrist Position Constants
+    public static final int
+        kWristIntakeCargoPosition = 0,
+        kWristIntakeCargoFromHuman = 0,
+        kWristIntakeHatchPosition = 0,
+        kWristOuttakeCargoLow = 0,
+        kWristOuttakeHatchLow = 0,
+        kWristOuttakeCargoMid = 0,
+        kWristOuttakeHatchMid = 0;
+    
+    // Arm Position Constants
+    public static final int
+        kArmIntakeCargoPosition = 0,
+        kArmIntakeHatchPosition = 0,
+        kArmOuttakeCargoLow = 0,
+        kArmOuttakeHatchLow = 0,
+        kArmOuttakeCargoMid = 0,
+        kArmOuttakeHatchMid = 0;
 }

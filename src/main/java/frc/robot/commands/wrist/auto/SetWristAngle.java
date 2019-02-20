@@ -5,52 +5,46 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.pneumatics;
+package frc.robot.commands.wrist.auto;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
-/**
- * Add your docs here.
- */
-public class OuttakeHatch extends TimedCommand {
-  /**
-   * Add your docs here.
-   */
-  private boolean
-    in = false,
-    out = true;
+public class SetWristAngle extends Command {
+  private double angle;
+  private double kP = 1.0, kD = 0.5;
+  private double error;
 
-  public OuttakeHatch(double timeout) {
-    super(timeout);
+  public SetWristAngle(double angle) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.pneumatics);
+    this.angle = angle;
   }
 
   // Called just before this Command runs the first time
-  @Override 
+  @Override
   protected void initialize() {
-    Robot.pneumatics.setSolenoidPosition(in); // Initialize to in
-    long storeTime = System.currentTimeMillis();
-    while(System.currentTimeMillis() - storeTime <= 0.3) {
-      // Wait for some time
-      System.out.println("Running outtake");
-    }
-    Robot.pneumatics.solenoidOuttake.set(Value.kForward); // Push hatch out
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    error = angle - (Robot.wrist.getAngle());
+    double speed = kP * error + kD * error / Constants.kDT;
+    Robot.arm.setSpeed(speed);
   }
 
-  // Called once after timeout
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    return (Math.abs(error-Robot.arm.getAngle()) <= 10);
+  }
+
+  // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.pneumatics.setSolenoidPosition(in);
-    // long storeTime = System.currentTimeMillis();00cccccccccccccccccccccccccccccccccccccccccccccccc
+    System.out.println("Finished setting arm angle");
   }
 
   // Called when another command which requires one or more of the same

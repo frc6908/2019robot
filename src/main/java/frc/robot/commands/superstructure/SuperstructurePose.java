@@ -8,18 +8,16 @@
 package frc.robot.commands.superstructure;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.drivetrain.auto.RampDrive;
-import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
+import frc.robot.commands.arm.auto.SetArmPosition;
+import frc.robot.commands.wrist.auto.SetWristPosition;
 
-import frc.robot.Constants;
-
-public class CenterStartToLeftCargoShipHatch extends CommandGroup {
+public class SuperstructurePose extends CommandGroup {
   /**
-   * Add your docs here.
+   * @param wristPos Wrist position to set in ticks
+   * @param armPos Arm position to set in ticks
    */
-  public CenterStartToLeftCargoShipHatch() {
-    addSequential(new RampDrive());
-    //addSequential(new RampToLeftCargoShip());
-    // outtake hatch
+  public SuperstructurePose(int wristPos, int armPos) {
+    addSequential(new SetWristPosition(wristPos));
+    addParallel(new SetArmPosition(armPos));
   }
 }

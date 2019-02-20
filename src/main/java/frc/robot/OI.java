@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.intake.IntakeBall;
 import frc.robot.commands.pneumatics.OuttakeHatch;
-import frc.robot.commands.pneumatics.OuttakeHatchPlate;
 import frc.robot.commands.vision.DoubleRRTFollowing;
+import frc.robot.commands.wrist.auto.SetWristPosition;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,12 +30,13 @@ public class OI {
     public Button 
         alignWithTarget = new JoystickButton(driveStick, Constants.kAlignWithTargetButton),
         intakeBall = new JoystickButton(driveStick, 1),
-        outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton);
+        outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton),
+        wristIntakeCargoGround = new JoystickButton(operatorController, Constants.kWristGroundIntakeButton);
 
     public OI() {
         alignWithTarget.whileHeld(new DoubleRRTFollowing());
         intakeBall.whileHeld(new IntakeBall());
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
-
+        wristIntakeCargoGround.whenPressed(new SetWristPosition(1000));
     }
 }
