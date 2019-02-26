@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 /**
@@ -34,15 +35,21 @@ public class RobotMap {
     public static WPI_TalonSRX
         armMasterMotor = new WPI_TalonSRX(Constants.kArmMasterMotor),
         armSlaveMotor = new WPI_TalonSRX(Constants.kArmSlaveMotor),
-        wristMotor = new WPI_TalonSRX(Constants.kWristMotor);
+        wristMotor = new WPI_TalonSRX(Constants.kWristMotor),
+        groundIntakeMotor = new WPI_TalonSRX(Constants.kGroundIntakePivot);
+
+    public static VictorSP
+        climberWheel = new VictorSP(Constants.kClimberWheel),
+        backClimber = new VictorSP(Constants.kBackClimber),
+        frontClimber = new VictorSP(Constants.kFrontClimber);
     
     public static Spark
         leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
-        rightIntakeMotor = new Spark(Constants.kRightIntakeMotor);
+        rightIntakeMotor = new Spark(Constants.kRightIntakeMotor),
+        gorundIntakeWheels = new Spark(Constants.kGroundIntakeWheels);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);
-    
     public static Encoder
         leftDriveEncoder = new Encoder(Constants.kLeftDriveEncoderChannelA, Constants.kLeftDriveEncoderChannelB),
         rightDriveEncoder = new Encoder(Constants.kRightDriveEncoderChannelA, Constants.kRightDriveEncoderChannelB);
@@ -55,4 +62,6 @@ public class RobotMap {
 
     public static DigitalInput
         armZeroSwitch = new DigitalInput(Constants.kZeroSwitchChannel);
+
+    
 }

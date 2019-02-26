@@ -19,9 +19,9 @@ public class RampToLeftCargoShip extends CommandGroup {
    */
   public RampToLeftCargoShip() {
     System.out.println("Running RampToCargoShip");
-    Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_left.csv"));
-    Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_right.csv"));
+    // Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_left.csv"));
+    // Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/deploy/RampToLeftCargoShip_right.csv"));
 
-    addSequential(new DrivePath(l, r, false));
+    // addSequential(new DrivePath(l, r, false));
   }
 }

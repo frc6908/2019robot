@@ -119,4 +119,17 @@ public class Constants {
         kArmOuttakeHatchLow = 0,
         kArmOuttakeCargoMid = 0,
         kArmOuttakeHatchMid = 0;
+    
+    // Ground Intake
+    public static final int 
+        kGroundIntakePivot = 0,
+        kGroundIntakeWheels = 0,
+        kGroundWheelButton = 0,
+        kGroundWheelIntake = 0;
+    
+    // Climber
+    public static final int
+        kClimberWheel = 0,
+        kBackClimber = 0,
+        kFrontClimber = 0;
 }
