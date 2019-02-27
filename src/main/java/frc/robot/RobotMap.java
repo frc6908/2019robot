@@ -39,14 +39,14 @@ public class RobotMap {
         groundIntakeMotor = new WPI_TalonSRX(Constants.kGroundIntakePivot);
 
     public static VictorSP
-        climberWheel = new VictorSP(Constants.kClimberWheel),
         backClimber = new VictorSP(Constants.kBackClimber),
         frontClimber = new VictorSP(Constants.kFrontClimber);
     
     public static Spark
         leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
         rightIntakeMotor = new Spark(Constants.kRightIntakeMotor),
-        gorundIntakeWheels = new Spark(Constants.kGroundIntakeWheels);
+        gorundIntakeWheels = new Spark(Constants.kGroundIntakeWheels),
+        climberWheel = new Spark(Constants.kClimberWheel);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);

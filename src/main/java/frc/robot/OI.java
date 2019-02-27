@@ -11,12 +11,14 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.climber.DeployClimbers;
+import frc.robot.commands.climber.RetractBackClimber;
+import frc.robot.commands.climber.RetractFrontClimbers;
 import frc.robot.commands.groundIntake.IntakeHatch;
 import frc.robot.commands.groundIntake.OuttakeGroundHatch;
 import frc.robot.commands.intake.IntakeBall;
 import frc.robot.commands.pneumatics.OuttakeHatch;
 import frc.robot.commands.vision.DoubleRRTFollowing;
-import frc.robot.commands.wrist.auto.SetWristPosition;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,7 +36,10 @@ public class OI {
         intakeBall = new JoystickButton(driveStick, 1),
         outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton),
         groundIntakeWheelOuttake = new JoystickButton(operatorController, Constants.kGroundWheelButton),
-        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake);
+        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake),
+        deployClimbersButton = new JoystickButton(driveStick, Constants.kDeployClimbersButton),
+        retractFrontClimber = new JoystickButton(driveStick, Constants.kFrontClimbersButton),
+        retractBackClimber = new JoystickButton(driveStick, Constants.kBackClimber);
 
     public OI() {
         alignWithTarget.whileHeld(new DoubleRRTFollowing());
@@ -42,5 +47,8 @@ public class OI {
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
         groundIntakeWheelIntake.whileHeld(new IntakeHatch());
         groundIntakeWheelOuttake.whileHeld(new OuttakeGroundHatch());
+        deployClimbersButton.whileHeld(new DeployClimbers());
+        retractFrontClimber.whileHeld(new RetractFrontClimbers());
+        retractBackClimber.whileHeld(new RetractBackClimber());
     }
 }

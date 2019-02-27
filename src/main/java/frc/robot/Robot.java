@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.GroundHatchIntake;
 import frc.robot.subsystems.Intake;
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
     public static Intake intake = new Intake();
     public static Pneumatics pneumatics = new Pneumatics();
     public static GroundHatchIntake groundIntake = new GroundHatchIntake();
+    public static Climber climber = new Climber();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();

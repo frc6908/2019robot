@@ -64,9 +64,9 @@ public class Constants {
     // Wrist Control Constants
     public static final double
         kWristF = 1.2035,
-        kWristP = 1.5, //0.465
+        kWristP = 0.465, //0.465
         kWristI = 0,
-        kWristD = 0;
+        kWristD = 4.65;
 
     public static final int
         kWristCruiseVelocity = 64,
@@ -89,7 +89,12 @@ public class Constants {
         kAlignWithTargetButton = 8,
         kOperatorController = 3,
         kHatchButton = 5,
-        kWristGroundIntakeButton = 1;
+        kWristGroundIntakeButton = 1,
+        kDpadYAxis = 0,
+        kMiniJoystickAxis = 0,
+        kDeployClimbersButton = 0,
+        kFrontClimbersButton = 0,
+        kBackClimberButton = 0;
     
     // Pneumatic Constants
     public static final int

@@ -5,16 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.groundIntake;
+package frc.robot.commands.climber;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class PivotGroundHatch extends Command {
-  public PivotGroundHatch() {
+public class RetractFrontClimbers extends Command {
+  public RetractFrontClimbers() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.groundIntake);
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -25,9 +24,7 @@ public class PivotGroundHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double yInput = 0.5*Robot.oi.operatorController.getRawAxis(Constants.kDpadYAxis);
-
-    Robot.groundIntake.pivot(yInput);
+    Robot.climber.retractFrontClimber();
   }
 
   // Make this return true when this Command no longer needs to run execute()
