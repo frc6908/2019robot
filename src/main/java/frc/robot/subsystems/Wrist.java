@@ -49,7 +49,7 @@ public class Wrist extends Subsystem {
     wristMotor.configMotionCruiseVelocity(Constants.kWristCruiseVelocity, 0);
     wristMotor.configMotionAcceleration(Constants.kWristAcceleration, 0);
 
-    wristMotor.setSelectedSensorPosition(0, 0, 0);
+    // wristMotor.setSelectedSensorPosition(0, 0, 0);
   }
 
   public void setPosition(double position) {
