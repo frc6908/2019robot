@@ -45,7 +45,7 @@ public class RobotMap {
     public static Spark
         leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
         rightIntakeMotor = new Spark(Constants.kRightIntakeMotor),
-        gorundIntakeWheels = new Spark(Constants.kGroundIntakeWheels),
+        groundIntakeWheels = new Spark(Constants.kGroundIntakeWheels),
         climberWheel = new Spark(Constants.kClimberWheel);
     
     public static AHRS
@@ -61,7 +61,9 @@ public class RobotMap {
         compressor = new Compressor(Constants.kCompressorPort);
 
     public static DigitalInput
-        armZeroSwitch = new DigitalInput(Constants.kZeroSwitchChannel);
-
-    
+        armZeroSwitch = new DigitalInput(Constants.kZeroSwitchChannel),
+        frontClimberTopLimit = new DigitalInput(Constants.kFrontTopLimit),
+        frontClimberBottomLimit = new DigitalInput(Constants.kFrontBottomLimit),
+        backClimberTopLimit = new DigitalInput(Constants.kBackTopLimit),
+        backClimberBottomLimit = new DigitalInput(Constants.kBackBottomLimit);
 }

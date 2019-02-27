@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.groundIntake;
+package frc.robot.commands.groundintake;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeHatch extends Command {
-  public IntakeHatch() {
+public class IntakeGroundHatch extends Command {
+  public IntakeGroundHatch() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

@@ -104,7 +104,11 @@ public class Constants {
     
     // Limit Switch Ports
     public static final int 
-        kZeroSwitchChannel = 4;
+        kZeroSwitchChannel = 4,
+        kFrontTopLimit = 5,
+        kFrontBottomLimit = 6,
+        kBackTopLimit = 7,
+        kBackBottomLimit = 8;
     
     // Wrist Position Constants
     public static final int

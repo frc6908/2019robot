@@ -10,10 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.drivetrain.auto.RampToLeftCargoShip;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
@@ -81,7 +79,7 @@ public class Robot extends TimedRobot {
         // if (m_autonomousCommand != null) {
         //     m_autonomousCommand.start();
         // }
-        m_autonomousCommand = new RampToLeftCargoShip(); // Change to any command group in commands.drivetrain.auto
+        // m_autonomousCommand = new RampToLeftCargoShip(); // Change to any command group in commands.drivetrain.auto
         m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 

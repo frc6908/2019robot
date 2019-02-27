@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.groundIntake;
+package frc.robot.commands.groundintake;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;

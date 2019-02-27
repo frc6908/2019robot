@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,34 +28,56 @@ public class Climber extends Subsystem {
   public Spark 
     climberWheel = RobotMap.climberWheel;
 
-  public void setClimberWheelSpeed(double speed)
-  {
+  public DigitalInput
+    frontClimberTopLimit = RobotMap.frontClimberTopLimit,
+    frontClimberBottomLimit = RobotMap.frontClimberBottomLimit,
+    backClimberTopLimit = RobotMap.backClimberTopLimit,
+    backClimberBottomLimit = RobotMap.backClimberBottomLimit;
+
+  public void setClimberWheelSpeed(double speed) {
     climberWheel.set(speed);
   }
 
-  public void deployClimbers()
-  {
+  public void deployClimbers() {
     frontClimbers.set(1);
     backClimber.set(1);
   }
 
-  public void retractFrontClimber()
-  {
+  public void retractFrontClimber() {
     frontClimbers.set(-1);
   }
-  public void retractBackClimber()
-  {
+
+  public void retractBackClimber() {
     backClimber.set(-1);
   }
 
-  public void deployFrontClimbers()
-  {
+  public void deployFrontClimbers() {
     frontClimbers.set(1);
   }
 
-  public void deployBackClimbers()
-  {
+  public void deployBackClimbers() {
     backClimber.set(1);
+  }
+
+  public boolean getFrontClimberDeployed() {
+    return frontClimberTopLimit.get();
+  }
+
+  public boolean getFrontClimberRetracted() {
+    return frontClimberBottomLimit.get();
+  }
+
+  public boolean getBackClimberDeployed() {
+    return backClimberTopLimit.get();
+  }
+
+  public boolean getBackClimberRetracted() {
+    return backClimberBottomLimit.get();
+  }
+
+  public void stop() {
+    frontClimbers.set(0);
+    backClimber.set(0);
   }
 
   @Override

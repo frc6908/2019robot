@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.climber.DeployClimbers;
 import frc.robot.commands.climber.RetractBackClimber;
 import frc.robot.commands.climber.RetractFrontClimbers;
-import frc.robot.commands.groundIntake.IntakeHatch;
-import frc.robot.commands.groundIntake.OuttakeGroundHatch;
+import frc.robot.commands.groundintake.IntakeGroundHatch;
+import frc.robot.commands.groundintake.OuttakeGroundHatch;
 import frc.robot.commands.intake.IntakeBall;
 import frc.robot.commands.pneumatics.OuttakeHatch;
-import frc.robot.commands.vision.DoubleRRTFollowing;
+import frc.robot.commands.vision.VisionAlign;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,10 +42,10 @@ public class OI {
         retractBackClimber = new JoystickButton(driveStick, Constants.kBackClimber);
 
     public OI() {
-        alignWithTarget.whileHeld(new DoubleRRTFollowing());
+        alignWithTarget.whileHeld(new VisionAlign());
         intakeBall.whileHeld(new IntakeBall());
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
-        groundIntakeWheelIntake.whileHeld(new IntakeHatch());
+        groundIntakeWheelIntake.whileHeld(new IntakeGroundHatch());
         groundIntakeWheelOuttake.whileHeld(new OuttakeGroundHatch());
         deployClimbersButton.whileHeld(new DeployClimbers());
         retractFrontClimber.whileHeld(new RetractFrontClimbers());
