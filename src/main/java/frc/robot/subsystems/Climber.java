@@ -21,12 +21,12 @@ public class Climber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public VictorSP
-    frontClimbers = RobotMap.frontClimber,
-    backClimber = RobotMap.backClimber;
+  // public VictorSP
+  //   frontClimbers = RobotMap.frontClimber,
+  //   backClimber = RobotMap.backClimber;
 
-  public Spark 
-    climberWheel = RobotMap.climberWheel;
+  // public Spark 
+  //   climberWheel = RobotMap.climberWheel;
 
   public DigitalInput
     frontClimberTopLimit = RobotMap.frontClimberTopLimit,
@@ -35,29 +35,29 @@ public class Climber extends Subsystem {
     backClimberBottomLimit = RobotMap.backClimberBottomLimit;
 
   public void setClimberWheelSpeed(double speed) {
-    climberWheel.set(speed);
+    // climberWheel.set(speed);
   }
 
-  public void deployClimbers() {
-    frontClimbers.set(1);
-    backClimber.set(1);
-  }
+  // public void deployClimbers() {
+  //   frontClimbers.set(1);
+  //   backClimber.set(1);
+  // }
 
-  public void retractFrontClimber() {
-    frontClimbers.set(-1);
-  }
+  // public void retractFrontClimber() {
+  //   frontClimbers.set(-1);
+  // }
 
-  public void retractBackClimber() {
-    backClimber.set(-1);
-  }
+  // public void retractBackClimber() {
+  //   backClimber.set(-1);
+  // }
 
-  public void deployFrontClimbers() {
-    frontClimbers.set(1);
-  }
+  // public void deployFrontClimbers() {
+  //   frontClimbers.set(1);
+  // }
 
-  public void deployBackClimbers() {
-    backClimber.set(1);
-  }
+  // public void deployBackClimbers() {
+  //   backClimber.set(1);
+  // }
 
   public boolean getFrontClimberDeployed() {
     return frontClimberTopLimit.get();
@@ -75,10 +75,10 @@ public class Climber extends Subsystem {
     return backClimberBottomLimit.get();
   }
 
-  public void stop() {
-    frontClimbers.set(0);
-    backClimber.set(0);
-  }
+  // public void stop() {
+  //   frontClimbers.set(0);
+  //   backClimber.set(0);
+  // }
 
   @Override
   public void initDefaultCommand() {

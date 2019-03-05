@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
+
 /**
  * Holds all constants for robot ports and control constants
  */
@@ -90,7 +92,6 @@ public class Constants {
         kOperatorController = 3,
         kHatchButton = 5,
         kWristGroundIntakeButton = 1,
-        kDpadYAxis = 0,
         kMiniJoystickAxis = 0,
         kDeployClimbersButton = 0,
         kFrontClimbersButton = 0,
@@ -131,10 +132,10 @@ public class Constants {
     
     // Ground Intake
     public static final int 
-        kGroundIntakePivot = 0,
-        kGroundIntakeWheels = 0,
-        kGroundWheelButton = 0,
-        kGroundWheelIntake = 0;
+        kGroundIntakePivot = 9,
+        kGroundIntakeWheels = 2,
+        kGroundWheelButton = 6,
+        kGroundWheelIntake = 12;
     
     // Climber
     public static final int

@@ -36,10 +36,10 @@ public class OI {
         intakeBall = new JoystickButton(driveStick, 1),
         outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton),
         groundIntakeWheelOuttake = new JoystickButton(operatorController, Constants.kGroundWheelButton),
-        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake),
-        deployClimbersButton = new JoystickButton(driveStick, Constants.kDeployClimbersButton),
-        retractFrontClimber = new JoystickButton(driveStick, Constants.kFrontClimbersButton),
-        retractBackClimber = new JoystickButton(driveStick, Constants.kBackClimber);
+        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake);
+        // deployClimbersButton = new JoystickButton(driveStick, Constants.kDeployClimbersButton),
+        // retractFrontClimber = new JoystickButton(driveStick, Constants.kFrontClimbersButton),
+        // retractBackClimber = new JoystickButton(driveStick, Constants.kBackClimber);
 
     public OI() {
         alignWithTarget.whileHeld(new VisionAlign());
@@ -47,8 +47,9 @@ public class OI {
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
         groundIntakeWheelIntake.whileHeld(new IntakeGroundHatch());
         groundIntakeWheelOuttake.whileHeld(new OuttakeGroundHatch());
-        deployClimbersButton.whileHeld(new DeployClimbers());
-        retractFrontClimber.whileHeld(new RetractFrontClimbers());
-        retractBackClimber.whileHeld(new RetractBackClimber());
+        // deployClimbersButton.whileHeld(new DeployClimbers());
+        // retractFrontClimber.whileHeld(new RetractFrontClimbers());
+        // retractBackClimber.whileHeld(new RetractBackClimber());
+        
     }
 }

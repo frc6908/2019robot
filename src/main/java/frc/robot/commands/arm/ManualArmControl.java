@@ -22,9 +22,9 @@ public class ManualArmControl extends Command {
 
   @Override
   protected void execute() {
-    //double speed = (0.2*Math.cos(Math.toRadians(90 - Robot.arm.getAngle()))) + -Robot.oi.operatorController.getY(Hand.kLeft) * 0.3;
+    double speed = (0.2*Math.cos(Math.toRadians(90 - Robot.arm.getAngle()))) + -Robot.oi.operatorController.getY(Hand.kLeft) * 0.3;
     
-    double speed  = -0.3 * Robot.oi.operatorController.getY();
+    // double speed  = -0.3 * Robot.oi.operatorController.getY();
     Robot.arm.setSpeed(speed);
   }
 

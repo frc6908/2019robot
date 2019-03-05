@@ -14,6 +14,7 @@ public class OuttakeGroundHatch extends Command {
   public OuttakeGroundHatch() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.groundIntake);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +25,7 @@ public class OuttakeGroundHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.groundIntake.outtake();
+    Robot.groundIntake.wheels.set(-0.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,11 +37,14 @@ public class OuttakeGroundHatch extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    System.out.println("Ending ground hatch outtake");
+    Robot.groundIntake.wheels.set(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

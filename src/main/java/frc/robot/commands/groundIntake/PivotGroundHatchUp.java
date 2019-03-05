@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class PivotGroundHatch extends Command {
-  public PivotGroundHatch() {
+public class PivotGroundHatchUp extends Command {
+  public PivotGroundHatchUp() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.groundIntake);
   }
@@ -25,9 +25,7 @@ public class PivotGroundHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double yInput = 0.5*Robot.oi.operatorController.getRawAxis(Constants.kDpadYAxis);
-
-    Robot.groundIntake.pivot(yInput);
+    Robot.groundIntake.pivot(0.3);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -17,6 +17,7 @@ import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.GroundHatchIntake;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Wrist;
@@ -32,7 +33,8 @@ public class Robot extends TimedRobot {
     public static Intake intake = new Intake();
     public static Pneumatics pneumatics = new Pneumatics();
     public static GroundHatchIntake groundIntake = new GroundHatchIntake();
-    public static Climber climber = new Climber();
+    // public static Climber climber = new Climber();
+    public static Pivot pivot = new Pivot();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();

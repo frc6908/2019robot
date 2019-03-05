@@ -38,15 +38,15 @@ public class RobotMap {
         wristMotor = new WPI_TalonSRX(Constants.kWristMotor),
         groundIntakeMotor = new WPI_TalonSRX(Constants.kGroundIntakePivot);
 
-    public static VictorSP
-        backClimber = new VictorSP(Constants.kBackClimber),
-        frontClimber = new VictorSP(Constants.kFrontClimber);
+    // public static VictorSP
+    //     backClimber = new VictorSP(Constants.kBackClimber),
+    //     frontClimber = new VictorSP(Constants.kFrontClimber);
     
     public static Spark
         leftIntakeMotor = new Spark(Constants.kLeftIntakeMotor),
         rightIntakeMotor = new Spark(Constants.kRightIntakeMotor),
-        groundIntakeWheels = new Spark(Constants.kGroundIntakeWheels),
-        climberWheel = new Spark(Constants.kClimberWheel);
+        groundIntakeWheels = new Spark(Constants.kGroundIntakeWheels);
+        // climberWheel = new Spark(Constants.kClimberWheel);
     
     public static AHRS
         gyro = new AHRS(Port.kMXP);

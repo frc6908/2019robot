@@ -7,41 +7,20 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
+import frc.robot.commands.pivot.PivotManualControl;
 
 /**
  * Add your docs here.
  */
-public class GroundHatchIntake extends Subsystem {
+public class Pivot extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  public Spark
-    wheels = RobotMap.groundIntakeWheels;
-
-  public WPI_TalonSRX
-    pivoter = RobotMap.groundIntakeMotor;
-
-  public void intake() {
-    wheels.set(.5);
-  }
-
-  public void outtake() {
-    wheels.set(-1);
-  }
-
-  public void pivot(double speed) {
-    RobotMap.groundIntakeMotor.set(speed);
-  }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new IntakeOuttakeGroundHatch());
+    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new PivotManualControl());
   }
 }

@@ -24,19 +24,19 @@ public class RetractFrontClimbers extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.retractFrontClimber();
+    //Robot.climber.retractFrontClimber();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.climber.getFrontClimberRetracted();
+    return false; //Robot.climber.getFrontClimberRetracted();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climber.stop();
+    //Robot.climber.stop();
   }
 
   // Called when another command which requires one or more of the same
