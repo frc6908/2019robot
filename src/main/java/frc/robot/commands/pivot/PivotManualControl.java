@@ -29,11 +29,11 @@ public class PivotManualControl extends Command {
   protected void execute() {
     if(Robot.oi.operatorController.getPOV() == 0)
     {
-        RobotMap.groundIntakeMotor.set(0.5);
+        RobotMap.groundIntakeMotor.set(0.3);
     }
     else if (Robot.oi.operatorController.getPOV() == 180)
     {
-      RobotMap.groundIntakeMotor.set(-0.5);
+      RobotMap.groundIntakeMotor.set(-0.3);
     }
     else{
         RobotMap.groundIntakeMotor.set(0.15);

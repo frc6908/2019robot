@@ -22,16 +22,16 @@ public class SetWristPosition extends Command {
 
   @Override
   protected void initialize() {
-  }
-
-  @Override
-  protected void execute() {
     Robot.wrist.setPosition(position);
   }
 
   @Override
+  protected void execute() {
+  }
+
+  @Override
   protected boolean isFinished() {
-    return false;//(Math.abs(Robot.wrist.wristMotor.getSelectedSensorPosition() - position) < 10);
+    return (Math.abs(Robot.wrist.wristMotor.getSelectedSensorPosition() - position) < 75);
   }
 
   @Override

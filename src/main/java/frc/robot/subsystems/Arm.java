@@ -51,7 +51,7 @@ public class Arm extends Subsystem {
     armMasterMotor.configMotionCruiseVelocity(Constants.kArmCruiseVelocity, 0);
     armMasterMotor.configMotionAcceleration(Constants.kArmAcceleration, 0);
 
-    armMasterMotor.setSelectedSensorPosition(0, 0, 0);
+    // armMasterMotor.setSelectedSensorPosition(0, 0, 0);
 
     armSlaveMotor.follow(armMasterMotor);
   }
@@ -83,6 +83,6 @@ public class Arm extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ManualArmControl());
+    // setDefaultCommand(new ManualArmControl());
   }
 }

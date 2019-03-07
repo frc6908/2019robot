@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeOuttake extends Command {
-  public IntakeOuttake() {
+public class OuttakeBall extends Command {
+  public OuttakeBall() {
     requires(Robot.intake);
   }
 

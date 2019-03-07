@@ -32,25 +32,20 @@ public class OuttakeHatch extends TimedCommand {
   // Called just before this Command runs the first time
   @Override 
   protected void initialize() {
-    Robot.pneumatics.setSolenoidPosition(in); // Initialize to in
-    long storeTime = System.currentTimeMillis();
-    while(System.currentTimeMillis() - storeTime <= 300) {
-      // Wait for some time
-      System.out.println("Running outtake");
-    }
-    Robot.pneumatics.solenoidOuttake.set(Value.kForward); // Push hatch out
+    Robot.pneumatics.setSolenoidPosition(out); // Push hatch out
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    // Wait timeout seconds
   }
 
   // Called once after timeout
   @Override
   protected void end() {
     Robot.pneumatics.setSolenoidPosition(in);
-    // long storeTime = System.currentTimeMillis();00cccccccccccccccccccccccccccccccccccccccccccccccc
+    // long storeTime = System.currentTimeMillis();
   }
 
   // Called when another command which requires one or more of the same

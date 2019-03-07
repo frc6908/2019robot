@@ -76,6 +76,6 @@ public class Wrist extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ManualWristControl());
+    // setDefaultCommand(new ManualWristControl());
   }
 }

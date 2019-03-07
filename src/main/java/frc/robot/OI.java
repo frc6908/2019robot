@@ -11,14 +11,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.climber.DeployClimbers;
-import frc.robot.commands.climber.RetractBackClimber;
-import frc.robot.commands.climber.RetractFrontClimbers;
 import frc.robot.commands.groundintake.IntakeGroundHatch;
 import frc.robot.commands.groundintake.OuttakeGroundHatch;
 import frc.robot.commands.intake.IntakeBall;
+import frc.robot.commands.pneumatics.DeployEjectPistons;
 import frc.robot.commands.pneumatics.OuttakeHatch;
 import frc.robot.commands.vision.VisionAlign;
+import frc.robot.commands.wrist.auto.SetWristPosition;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,7 +35,8 @@ public class OI {
         intakeBall = new JoystickButton(driveStick, 1),
         outtakeHatch = new JoystickButton(operatorController, Constants.kHatchButton),
         groundIntakeWheelOuttake = new JoystickButton(operatorController, Constants.kGroundWheelButton),
-        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake);
+        groundIntakeWheelIntake = new JoystickButton(driveStick, Constants.kGroundWheelIntake),
+        testWristMM = new JoystickButton(operatorController, Constants.kTestWristMM);
         // deployClimbersButton = new JoystickButton(driveStick, Constants.kDeployClimbersButton),
         // retractFrontClimber = new JoystickButton(driveStick, Constants.kFrontClimbersButton),
         // retractBackClimber = new JoystickButton(driveStick, Constants.kBackClimber);
@@ -47,6 +47,8 @@ public class OI {
         outtakeHatch.whenPressed(new OuttakeHatch(0.3));
         groundIntakeWheelIntake.whileHeld(new IntakeGroundHatch());
         groundIntakeWheelOuttake.whileHeld(new OuttakeGroundHatch());
+        testWristMM.whenPressed(new SetWristPosition(0));
+        // outtakeHatch.whenPressed(new DeployEjectPistons());
         // deployClimbersButton.whileHeld(new DeployClimbers());
         // retractFrontClimber.whileHeld(new RetractFrontClimbers());
         // retractBackClimber.whileHeld(new RetractBackClimber());

@@ -64,7 +64,7 @@ public class Constants {
         kWristMotor = 8;
 
     // Wrist Control Constants
-    public static final double
+    public static double
         kWristF = 1.2035,
         kWristP = 0.465, //0.465
         kWristI = 0,
@@ -142,4 +142,8 @@ public class Constants {
         kClimberWheel = 0,
         kBackClimber = 0,
         kFrontClimber = 0;
+
+    // Testing Joystick
+    public static final int
+        kTestWristMM = 1;
 }

@@ -5,31 +5,43 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.intake;
+package frc.robot.commands.pneumatics;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
-public class TimedIntakeCargo extends TimedCommand {
-  public TimedIntakeCargo(double timeout) {
+/**
+ * Add your docs here.
+ */
+public class setOff extends TimedCommand {
+  /**
+   * Add your docs here.
+   */
+  public setOff(double timeout) {
     super(timeout);
-    // requires(Robot.intake);
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // Robot.intake.setLeftIntakeMotor(1);
-    // Robot.intake.setRightIntakeMotor(-1);
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
   }
 
+  // Called once after timeout
   @Override
   protected void end() {
+    Robot.pneumatics.solenoidOuttake.set(Value.kOff);
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

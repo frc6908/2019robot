@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.intake.IntakeOuttake;
+import frc.robot.commands.intake.OuttakeBall;
 
 /**
  * Subsystem that controls cargo ball intake functionality
@@ -33,6 +33,6 @@ public class Intake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new IntakeOuttake());
+    setDefaultCommand(new OuttakeBall());
   }
 }
