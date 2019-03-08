@@ -44,7 +44,8 @@ public class OI {
     public OI() {
         alignWithTarget.whileHeld(new VisionAlign());
         intakeBall.whileHeld(new IntakeBall());
-        outtakeHatch.whenPressed(new OuttakeHatch(0.3));
+        // outtakeHatch.whenPressed(new OuttakeHatch(0.3));
+        outtakeHatch.whenPressed(new DeployEjectPistons());
         groundIntakeWheelIntake.whileHeld(new IntakeGroundHatch());
         groundIntakeWheelOuttake.whileHeld(new OuttakeGroundHatch());
         testWristMM.whenPressed(new SetWristPosition(0));

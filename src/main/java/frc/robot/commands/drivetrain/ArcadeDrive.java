@@ -25,7 +25,7 @@ public class ArcadeDrive extends Command {
   protected void execute() {
     double speed;
     if(Math.abs(Robot.oi.driveStick.getY()) > 0.08) {
-      speed = -Robot.oi.driveStick.getY() * 0.5;
+      speed = -Robot.oi.driveStick.getY();
     }
     else {
       speed = 0;

@@ -51,8 +51,8 @@ public class Robot extends TimedRobot {
         // m_chooser.setDefaultOption("Default Auto", new SimpleFourFoot());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
-        // pneumatics.turnOn();
-        pneumatics.turnOff();
+        pneumatics.turnOn();
+        // pneumatics.turnOff();
     }
 
     @Override
@@ -88,12 +88,13 @@ public class Robot extends TimedRobot {
         //     m_autonomousCommand.start();
         // }
         // m_autonomousCommand = new RampToLeftCargoShip(); // Change to any command group in commands.drivetrain.auto
-        m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
+        // m_autonomousCommand.start(); // This will automatically run when Autonomous is Enabled in the driverstation (BE CAREFUL!)
     }
 
     @Override
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
+        // Scheduler.getInstance().run();
+        teleopPeriodic();
     }
 
     @Override
